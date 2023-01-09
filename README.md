@@ -26,7 +26,7 @@ Llamamos al script con el comando "python3 script1.py". Este script:
 
 A continuacion probamos a introducir en el navegador la ip publica de la MV con el puerto introducido (http://<ip-publica>:<puerto>/productpage) obteniendo el resultado esperado.
   
-![Captura de pantalla de 2023-01-09 19-08-51](https://user-images.githubusercontent.com/99333138/211382525-cc601caf-c0d5-47bc-9f83-6e03976a923e.png)
+![Captura de pantalla de 2023-01-09 19-08-51](https://user-images.githubusercontent.com/99333138/211384476-570fd7cf-4d89-411f-bf6a-d37cfc534b9b.png)
 
 Como podemos observar, el titulo de la aplicación es en nuestro caso 35 y la conexión se establece correctamente.
 
