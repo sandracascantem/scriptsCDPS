@@ -21,7 +21,7 @@ def arch(fi, rep1, rep2):
 #Clonamos la carpeta practica_creativa2 del github
 subprocess.run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
 #Cambiamos de directorio (a partir de ahora se trabaja dentro de la carpeta practica_creativa2)
-os.chdir('practica_creativa2')
+#os.chdir('/home/sandracascantemoran/scriptsCDPS')
 
 #Modificamos el fichero requirements.txt
 arch('requirements.txt', 'urllib3==1.26.5', 'urllib3==1.26.13')
