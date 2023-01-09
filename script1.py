@@ -26,6 +26,8 @@ subprocess.run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa
 #Modificamos el fichero requirements.txt
 arch('requirements.txt', 'urllib3==1.26.5', 'urllib3')
 arch('requirements.txt', 'chardet==3.0.4', 'chardet')
+arch('requirements.txt', 'gevent==1.4.0', 'gevent')
+arch('requirements.txt', 'greenlet==0.4.15', 'greenlet')
 #Instalamos pip sudo apt-get install python-pip
 subprocess.run(["sudo", "apt-get", "install", "python3-pip"])
 #Instalamos dependencias de requirements.txt con pip
