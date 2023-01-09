@@ -11,22 +11,22 @@ Para probarlo, hemos creado una MV en Google Cloud y abierto su consola SSH en u
 
 Llamamos al script con el comando "python3 script1.py". Este script:
 
-  -Clona la carpeta practica_creativa2 del github de la asignatura.
+	-Clona la carpeta practica_creativa2 del github de la asignatura.
   
-  -Instala pip en la maquina virtual y se instalan las dependencias de requirements con pip3.
+	-Instala pip en la maquina virtual y se instalan las dependencias de requirements con pip3.
   
-  -Crea la variable de entorno "GROUP_NUMBER" que es nuestro numero de grupo (35).
+	-Crea la variable de entorno "GROUP_NUMBER" que es nuestro numero de grupo (35).
   
-  -Modifica el productpage.html para cambiar el titulo de la app por la variable de entorno.
+	-Modifica el productpage.html para cambiar el titulo de la app por la variable de entorno.
   
-  -Pide introducir un puerto en el rango 8980-9080 para cambiarlo en el fichero. Esto se debe a una regla del FW en Google Cloud donde a los puertos TCP se les ha asignado el rango de puertos mencionado anteriormente.
+	-Pide introducir un puerto en el rango 8980-9080 para cambiarlo en el fichero. Esto se debe a una regla del FW en Google Cloud donde a los puertos TCP se les ha asignado el rango de puertos mencionado anteriormente.
   
-  -Llama a "productpage_monolith.py" con el puerto introducido en el paso anterior.
+	-Llama a "productpage_monolith.py" con el puerto introducido en el paso anterior.
 
 
 A continuacion probamos a introducir en el navegador la ip publica de la MV con el puerto introducido (http://<ip-publica>:<puerto>/productpage) obteniendo el resultado esperado.
   
 ![Captura de pantalla de 2023-01-09 19-08-51](https://user-images.githubusercontent.com/99333138/211382525-cc601caf-c0d5-47bc-9f83-6e03976a923e.png)
 
-
+Como podemos observar, el titulo de la aplicación es en nuestro caso 35 y la conexión se establece correctamente.
 
