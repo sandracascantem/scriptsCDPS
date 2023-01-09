@@ -3,7 +3,7 @@
 
 #Grupo 35
 
------DESPLIEGUE DE LA APLICACION EN MAQUINA VIRTUAL PESADA-----
+-----DESPLIEGUE DE LA APLICACIÓN EN MÁQUINA VIRTUAL PESADA-----
 
 La idea es desplegar la aplicación como si fuera un monolito en una máquina virtual pesada en Google Cloud. Para ello, hemos creado el script "script1.py" entregado en el zip. También lo hemos subido a nuestro repositorio de github: https://github.com/sandracascantem/scriptsCDPS
 
