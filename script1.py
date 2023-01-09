@@ -44,7 +44,7 @@ title = os.environ.get('GROUP_NUMBER')
 arch('templates/productpage.html', 'Simple Bookstore App', title)
 
 #Modificamos el script productpage_monolith.py para cambiar el puerto por otro introducido
-puerto = input("Introduce un puerto: \n")
+puerto = input("Introduce un puerto entre 8980 y 9080: \n")
 arch('productpage_monolith.py', '9080', puerto)
 
 #Llamamos a productpage_monolith.py para crear la aplicacion (como si fuese un monolito)
