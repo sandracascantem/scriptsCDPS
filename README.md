@@ -1,6 +1,8 @@
 # Scripts CDPS
 Scripts para la practica creativa 2 de CDPS
+
 #Creado por Antonio Ardura Carnicero, Sandra Cascante Moran y Martin Rodriguez Barroso
+
 #Grupo 35
 
 -----DESPLIEGUE DE LA APLICACION EN MAQUINA VIRTUAL PESADA-----
