@@ -17,7 +17,6 @@ def arch(fi, rep1, rep2):
 		fin.write(x)
 	fin.close()
 
-
 #Clonamos la carpeta practica_creativa2 del github
 subprocess.run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
 #Cambiamos de directorio (a partir de ahora se trabaja dentro de la carpeta practica_creativa2)
@@ -32,7 +31,6 @@ arch('requirements.txt', 'greenlet==0.4.15', 'greenlet')
 subprocess.run(["sudo", "apt-get", "install", "python3-pip"])
 #Instalamos dependencias de requirements.txt con pip
 subprocess.run(["pip3", "install", '-r', './practica_creativa2/bookinfo/src/productpage/requirements.txt'])
-
 
 #Creamos la variable de entorno (con nuestro num de grupo, 35)
 os.environ['GROUP_NUMBER']= "35"
