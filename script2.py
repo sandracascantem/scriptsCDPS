@@ -15,7 +15,7 @@ doc.write("#Clonamos repositorio pc2\nRUN git clone https://github.com/CDPS-ETSI
 doc.write("#Nos movemos al directorio\nWORKDIR practica_creativa2\n")
 doc.write("#Variable entorno al contenedor\nENV GROUP_NUMBER '35'\n")
 doc.write("#Abrimos el puerto 9080\nEXPOSE 9080\n")
-doc.write("#Lanza la aplicacion\nCMD ['python3', './practica_creativa2/bookinfo/src/productpage/productpage_monolith.py', '9080']\n")
+doc.write("#Lanza la aplicacion\nCMD ['python3', 'practica_creativa2/bookinfo/src/productpage/productpage_monolith.py', '9080']\n")
 doc.close()
 
 #Creamos imagen
