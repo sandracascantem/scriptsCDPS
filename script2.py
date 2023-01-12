@@ -8,9 +8,9 @@ from script0 import arch
 subprocess.run(["python3", "./script0.py"])
 
 #Instalamos entorno docker
-subprocess.run(["apt", "update"])
-subprocess.run(["apt", "install", "docker.io"])
-subprocess.run(["apt", "install", "docker-compose"])
+subprocess.run(["sudo", "apt", "update"])
+subprocess.run(["sudo", "apt", "install", "docker.io"])
+subprocess.run(["sudo", "apt", "install", "docker-compose"])
 
 #Creamos Dockerfile
 doc = open("./Dockerfile", "w")
