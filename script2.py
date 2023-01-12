@@ -23,7 +23,7 @@ doc.write("#Lanza la aplicacion\nCMD ['python3', './practica_creativa2/bookinfo/
 #Creamos imagen
 subprocess.run(["sudo", "docker", "build", "-t", "35/product-page", "."])
 
-print($GROUP_NUMBER)
+print(GROUP_NUMBER)
 #Modificamos productpage.html para cambiar el titulo de la app por la variable de entorno
-#arch('templates/productpage.html', 'Simple Bookstore App', $GROUP_NUMBER)
+#arch('templates/productpage.html', 'Simple Bookstore App', GROUP_NUMBER)
 
