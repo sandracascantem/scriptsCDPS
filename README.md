@@ -29,3 +29,8 @@ A continuación probamos a introducir en el navegador la ip pública de la MV co
 ![Captura de pantalla de 2023-01-09 19-08-51](https://user-images.githubusercontent.com/99333138/211384476-570fd7cf-4d89-411f-bf6a-d37cfc534b9b.png)
 
 Como podemos observar, el título de la aplicación es en nuestro caso 35 y la conexión se establece correctamente.
+
+
+-----DESPLIEGUE DE UNA APLICACIÓN MONOLÍTICA USANDO DOCKER-----
+
+
