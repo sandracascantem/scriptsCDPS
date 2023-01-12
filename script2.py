@@ -4,9 +4,6 @@ import os, sys, subprocess, script0
 from subprocess import call
 from script0 import arch
 
-#Llamamos al script0 (comandos comunes pc2)
-subprocess.run(["python3", "./script0.py"])
-
 #Instalamos entorno docker
 subprocess.run(["sudo", "apt", "update"])
 subprocess.run(["sudo", "apt", "install", "docker.io"])
