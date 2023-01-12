@@ -13,9 +13,10 @@ doc = open("./Dockerfile", "w")
 doc.write("FROM python:3.7\n")
 doc.write("#Clonamos repositorio pc2\nRUN git clone https://github.com/CDPS-ETSIT/practica_creativa2\n")
 doc.write("#Nos movemos al directorio\nWORKDIR practica_creativa2\n")
+doc.write("#Clonamos repositorio pc2\nRUN pip3 install -r practica_creativa2/bookinfo/src/productpage/requirements.txt\n")
 doc.write("#Variable entorno al contenedor\nENV GROUP_NUMBER '35'\n")
 doc.write("#Abrimos el puerto 9080\nEXPOSE 9080\n")
-doc.write('#Lanza la aplicacion\nCMD ["python3", "./bookinfo/src/productpage/productpage_monolith.py", "9080"]\n')
+doc.write('#Lanza la aplicacion\nCMD ["python3", "practica_creativa2/bookinfo/src/productpage/productpage_monolith.py", "9080"]\n')
 doc.close()
 
 #Creamos imagen
