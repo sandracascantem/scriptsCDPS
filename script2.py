@@ -9,7 +9,6 @@ subprocess.run(["python3", "./script0.py"])
 
 #Instalamos entorno docker
 subprocess.run(["apt", "update"])
-subprocess.run(["apt", "upgrade"])
 subprocess.run(["apt", "install", "docker.io"])
 subprocess.run(["apt", "install", "docker-compose"])
 
