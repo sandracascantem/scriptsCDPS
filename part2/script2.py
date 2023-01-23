@@ -26,3 +26,7 @@ arch('requirements.txt', 'greenlet==0.4.15', 'greenlet')
 subprocess.run(["sudo", "apt-get", "install", "python3-pip"])
 #Instalamos dependencias de requirements.txt con pip
 subprocess.run(["pip3", "install", '-r', './practica_creativa2/bookinfo/src/productpage/requirements.txt'])
+
+#Capturamos la variable GROUP_NUMBER definida en el Dockerfile
+title = os.environ.get('GROUP_NUMBER')
+arch('templates/productpage.html', 'Simple Bookstore App', title)
