@@ -1,12 +1,13 @@
 FROM python:3.8
 
+ENV GROUP_NUMBER = 35
+
 RUN git clone https://github.com/CDPS-ETSIT/practica_creativa2.git
 
 COPY script2.py .
 
-RUN python3 script2.py
+RUN python3 script2.py GROUP_NUMBER
 
-ENV GROUP_NUMBER = 35
 
 EXPOSE 9080
 
