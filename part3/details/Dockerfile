@@ -1,8 +1,10 @@
 FROM ruby:2.7.1-slim
 
+RUN git clone https://github.com/CDPS-ETSIT/practica_creativa2
+
 WORKDIR /opt/microservices/
 
-COPY ./details.rb .
+COPY /practica_creativa2/bookinfo/src/details/details.rb .
 
 ENV SERVICE_VERSION v1
 
