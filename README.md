@@ -24,7 +24,7 @@ Llamamos al script con el comando "python3 script1.py". Este script:
 	-Llama a "productpage_monolith.py" con el puerto introducido en el paso anterior.
 
 
-A continuación probamos a introducir en el navegador la ip pública de la MV con el puerto introducido (http://(<ip-publica>):(<puerto>)/productpage) obteniendo el resultado esperado.
+A continuación probamos a introducir en el navegador la ip pública de la MV con el puerto introducido (http://(ip-publica):(puerto)/productpage) obteniendo el resultado esperado.
   
 ![Captura de pantalla de 2023-01-09 19-08-51](https://user-images.githubusercontent.com/99333138/211384476-570fd7cf-4d89-411f-bf6a-d37cfc534b9b.png)
 
