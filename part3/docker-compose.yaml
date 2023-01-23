@@ -1,1 +1,24 @@
+version '3'
 
+services:
+  productpage:
+    build:
+    image:
+    container_name:
+  
+  details:
+    build:
+    image:
+    container_name:
+  
+  reviews:
+    build:
+    image:
+    container_name:
+  
+  ratings:
+    build:
+    image:
+    container_name:
+  
+  
