@@ -17,4 +17,4 @@ def arch(fi, rep1, rep2):
 		fin.write(x)
 	fin.close()
 
-#Modificamos el fichero requirements.txt
+#copiamos la practica
