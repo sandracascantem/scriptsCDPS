@@ -6,8 +6,7 @@ RUN git clone https://github.com/CDPS-ETSIT/practica_creativa2.git
 
 COPY script2.py .
 
-RUN python3 script2.py GROUP_NUMBER
-
+RUN python3 script2.py 
 
 EXPOSE 9080
 
