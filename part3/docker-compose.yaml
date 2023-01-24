@@ -2,7 +2,7 @@ version: '3.0'
 
 services:
   productpage:
-    build: ./productpage/.
+    build: ./productPage/.
     image: 35/productpage
     container_name: 35-productpage
     ports:
