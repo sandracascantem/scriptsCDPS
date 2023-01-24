@@ -8,30 +8,30 @@ services:
     ports:
       - '9080:9080'
     environment:
-      - GROUP_NUMBER = 35
+      - GROUP_NUMBER=35
   
   details:
     build: ./details/.
     image: 35/details
     container_name: 35-details
     environment:
-      - SERVICE_VERSION = v1
-      - ENABLE_EXTERNAL_BOOK_SERVICE = true
+      - SERVICE_VERSION=v1
+      - ENABLE_EXTERNAL_BOOK_SERVICE=true
     
   
   reviews:
-    build: ./practica_creativa2/bookinfo/src/reviews/.
+    build: ./practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg/.
     image: 35/reviews
     container_name: 35-reviews
     environment:
-      - SERVICE_VERSION = v1
-      - ENABLE_RATINGS = true
+      - SERVICE_VERSION=v1
+      - ENABLE_RATINGS=true
   
   ratings:
     build: ./ratings/.
     image: 35/ratings
     container_name: 35-ratings
     environment:
-      - SERVICE_VERSION = v1
+      - SERVICE_VERSION=v1
   
   
