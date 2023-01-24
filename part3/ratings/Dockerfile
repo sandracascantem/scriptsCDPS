@@ -2,9 +2,9 @@ FROM node:12.18.1-slim
 
 WORKDIR /opt/microservices/
 
-COPY ../practica_creativa2/bookinfo/src/ratings/package.json .
+COPY package.json .
 
-COPY ../practica_creativa2/bookinfo/src/ratings/ratings.js .
+COPY ratings.js .
 
 ENV SERVICE_VERSION v1  
 
