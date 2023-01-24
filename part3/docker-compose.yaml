@@ -8,7 +8,6 @@ services:
     ports:
       - '9080:9080'
     environment:
-      - ENABLE_RATINGS = true
       - GROUP_NUMBER = 35
   
   details:
@@ -17,7 +16,7 @@ services:
     container_name: 35-details
     environment:
       - SERVICE_VERSION = v1
-      - ENABLE_EXTERNAL_BOOK = true
+      - ENABLE_EXTERNAL_BOOK_SERVICE = true
     
   
   reviews:
