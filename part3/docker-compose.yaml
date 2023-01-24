@@ -26,6 +26,7 @@ services:
     container_name: 35-reviews
     environment:
       - SERVICE_VERSION = v1
+      - ENABLE_RATINGS = true
   
   ratings:
     build: ./ratings/.
