@@ -14,7 +14,7 @@ run(["cp", "practica_creativa2/bookinfo/src/ratings/package.json", "./ratings/."
 run(["cp", "practica_creativa2/bookinfo/src/ratings/.DS_Store", "./ratings/."])
 
 #Cambiamos de directorio (a partir de ahora se trabaja dentro de la ruta src/reviews/reviews-wlpcfg)
-os.chdir('./reviews/reviews-wlpcfg')
+os.chdir('./practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg')
 
 #compilar y empaquetar ficheros necesarios
 call(['sudo docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build'], shell=True)
