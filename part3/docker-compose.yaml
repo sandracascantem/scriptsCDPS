@@ -1,7 +1,7 @@
 version: '3.0'
 
 services:
-  productpage:
+  productPage:
     build: ./productPage/.
     image: 35/productpage
     container_name: 35-productpage
@@ -17,7 +17,7 @@ services:
     environment:
       - SERVICE_VERSION=v1
       - ENABLE_EXTERNAL_BOOK_SERVICE=true
-    
+    depends-on: productPage
   
   reviews:
     build: ./practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg/.
@@ -26,6 +26,7 @@ services:
     environment:
       - SERVICE_VERSION=v1
       - ENABLE_RATINGS=true
+    depends-on: productPage
   
   ratings:
     build: ./ratings/.
@@ -33,5 +34,6 @@ services:
     container_name: 35-ratings
     environment:
       - SERVICE_VERSION=v1
+    depends-on: productPage
   
   
