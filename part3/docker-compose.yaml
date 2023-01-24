@@ -20,7 +20,7 @@ services:
     
   
   reviews:
-    build: ./reviews/.
+    build: ./practica_creativa2/bookinfo/src/reviews/.
     image: 35/reviews
     container_name: 35-reviews
     environment:
