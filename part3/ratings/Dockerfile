@@ -6,7 +6,9 @@ COPY package.json .
 
 COPY ratings.js .
 
-ENV SERVICE_VERSION v1  
+ARG service_version
+
+ENV SERVICE_VERSION ${service_version:-v1}
 
 RUN npm install
 
