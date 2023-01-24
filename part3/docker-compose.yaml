@@ -1,7 +1,7 @@
 version: '3.0'
 
 services:
-  productPage:
+  productpage:
     build: ./productPage/.
     image: 35/productpage
     container_name: 35-productpage
@@ -9,34 +9,35 @@ services:
       - '9080:9080'
     environment:
       - GROUP_NUMBER=35
-      - ENABLE_RATINGS=true
   
   details:
     build: ./details/.
     image: 35/details
     container_name: 35-details
+    depends_on: 
+      - productpage
     environment:
       - SERVICE_VERSION=v1
       - ENABLE_EXTERNAL_BOOK_SERVICE=true
-    depends_on: 
-      - productPage
   
   reviews:
     build: ./practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg/.
     image: 35/reviews
     container_name: 35-reviews
+    depends_on: 
+      - productpage
     environment:
       - ENABLE_RATINGS=true
-    depends_on: 
-      - productPage
-  
+      - SERVICE_VERSION=v1
+
   ratings:
     build: ./ratings/.
     image: 35/ratings
     container_name: 35-ratings
-    environment:
-      - SERVICE_VERSION=v1
     depends_on: 
       - reviews
+    environment:
+      - SERVICE_VERSION=v1
+
   
   
