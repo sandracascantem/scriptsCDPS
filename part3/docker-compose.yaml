@@ -9,6 +9,7 @@ services:
       - '9080:9080'
     environment:
       - GROUP_NUMBER=35
+      - ENABLE_RATINGS=true
   
   details:
     build: ./details/.
