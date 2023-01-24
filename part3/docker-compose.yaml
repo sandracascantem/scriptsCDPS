@@ -26,7 +26,6 @@ services:
     image: 35/reviews
     container_name: 35-reviews
     environment:
-      - SERVICE_VERSION=v1
       - ENABLE_RATINGS=true
     depends_on: 
       - productPage
