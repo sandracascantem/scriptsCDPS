@@ -8,7 +8,7 @@ COPY ratings.js .
 
 ENV SERVICE_VERSION v1  
 
-RUN npm install package.json
+RUN npm install
 
 EXPOSE 9080
 
