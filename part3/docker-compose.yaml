@@ -1,24 +1,37 @@
-version: '3'
+version: '3.0'
 
 services:
   productpage:
-    build:
-    image:
-    container_name:
+    build: ./productpage/.
+    image: 35/productpage
+    container_name: 35-productpage
+    ports:
+      - '9080:9080'
+    environment:
+      - ENABLE_RATINGS = true
+      - GROUP_NUMBER = 35
   
   details:
-    build:
-    image:
-    container_name:
+    build: ./details/.
+    image: 35/details
+    container_name: 35-details
+    environment:
+      - SERVICE_VERSION = v1
+      - ENABLE_EXTERNAL_BOOK = true
+    
   
   reviews:
-    build:
-    image:
-    container_name:
+    build: ./reviews/.
+    image: 35/reviews
+    container_name: 35-reviews
+    environment:
+      - SERVICE_VERSION = v1
   
   ratings:
-    build:
-    image:
-    container_name:
+    build: ./ratings/.
+    image: 35/ratings
+    container_name: 35-ratings
+    environment:
+      - SERVICE_VERSION = v1
   
   
