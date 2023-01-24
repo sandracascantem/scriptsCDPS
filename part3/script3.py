@@ -12,7 +12,6 @@ run(["cp", "practica_creativa2/bookinfo/src/details/.DS_Store", "./details/."])
 run(["cp", "practica_creativa2/bookinfo/src/ratings/ratings.js", "./ratings/."])
 run(["cp", "practica_creativa2/bookinfo/src/ratings/package.json", "./ratings/."])
 run(["cp", "practica_creativa2/bookinfo/src/ratings/.DS_Store", "./ratings/."])
-run(["cp", "-R", "practica_creativa2/bookinfo/src/reviews", "."])
 
 #Cambiamos de directorio (a partir de ahora se trabaja dentro de la ruta src/reviews/reviews-wlpcfg)
 os.chdir('./reviews/reviews-wlpcfg')
