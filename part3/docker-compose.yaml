@@ -28,7 +28,7 @@ services:
       - productpage
     environment:
       - ENABLE_RATINGS=true
-      - SERVICE_VERSION=v2
+      - SERVICE_VERSION=v1
 
   ratings:
     build: ./ratings/.
