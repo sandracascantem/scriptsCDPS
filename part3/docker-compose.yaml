@@ -17,7 +17,7 @@ services:
     depends_on: 
       - productpage
     environment:
-      - SERVICE_VERSION=v2
+      - SERVICE_VERSION=v1
       - ENABLE_EXTERNAL_BOOK_SERVICE=true
   
   reviews:
@@ -38,4 +38,4 @@ services:
     depends_on: 
       - reviews
     environment:
-      - SERVICE_VERSION=v2
+      - SERVICE_VERSION=v1
