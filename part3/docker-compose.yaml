@@ -27,8 +27,9 @@ services:
     depends_on: 
       - productpage
     environment:
-      - ENABLE_RATINGS=true
-      - SERVICE_VERSION=v1
+      - ENABLE_RATINGS=true #false para la V1
+      - SERVICE_VERSION=v1  #Cambia la version (v1/v2/v3)
+      - STAR_COLOR=black    #black V2 y red=V3
 
   ratings:
     build: ./ratings/.
