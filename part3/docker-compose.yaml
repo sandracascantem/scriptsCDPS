@@ -29,7 +29,6 @@ services:
     environment:
       - ENABLE_RATINGS=true
       - SERVICE_VERSION=v2
-      - STAR_COLOR=red
 
   ratings:
     build: ./ratings/.
