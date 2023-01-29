@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
       - name: details
-        image: <GROUP_NUMBER>/details
+        image: 35/details
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
