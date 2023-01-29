@@ -42,11 +42,6 @@ spec:
         - containerPort: 9080
         securityContext:
           runAsUser: 1000
-      env:
-      - name: DETAILS
-      value: "details:9080"
-      - name: REVIEWS
-      value: "reviews:9080"
 ---
 #service que permita acceder por medio de una IP externa a la aplicación por medio del microservicio productpage
 apiVersion: v1
