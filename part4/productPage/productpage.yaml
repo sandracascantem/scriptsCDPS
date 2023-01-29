@@ -36,17 +36,12 @@ spec:
     spec:
       containers:
       - name: productpage
-        image: gcr.io/flash-aviary-369714/35/productpage:v1
+        image: 35/productpage
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
         securityContext:
           runAsUser: 1000
-      env:
-      - name: DETAILS
-        value: "details:9080"
-      - name: REVIEWS
-        value: "reviews:9080"
 ---
 apiVersion: v1
 kind: Service
