@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
       - name: ratings
-        image: <GROUP_NUMBER>/ratings
+        image: 35/ratings
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
