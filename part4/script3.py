@@ -3,7 +3,8 @@
 import os, sys, subprocess
 from subprocess import call, run
 
-os.env
+#Creamos la variable de entorno (con nuestro num de grupo, 35) EDITAR LUEGOOOOOO
+os.environ['GROUP_NUMBER']= "35"
 
 #Clonamos la carpeta practica_creativa2 del github
 run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
