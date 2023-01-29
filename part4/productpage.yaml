@@ -47,7 +47,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  - name: productpage-external
+  - name: productpage-loadbalancer
 spec:
   type: LoadBalancer
   selector:
