@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
       - name: productpage
-        image: gcr.io/polar-elf-367509/48/productpage:v1
+        image: 35/productpage
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
