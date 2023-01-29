@@ -36,7 +36,7 @@ spec:
     spec:
       containers:
       - name: productpage
-        image: gcr.io/flash-aviary-369714/35/productpage
+        image: 35/productpage
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9080
