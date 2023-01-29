@@ -3,6 +3,8 @@
 import os, sys, subprocess
 from subprocess import call, run
 
+os.env
+
 #Clonamos la carpeta practica_creativa2 del github
 run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
 
