@@ -1,8 +1,21 @@
 #!/usr/bin/python3
 
-import os, sys, subprocess, functions
+import os, sys, subprocess
 from subprocess import call
-from functions import arch
+
+#Funcion arch para reemplazar dentro de un archivo de practica_creativa2
+def arch(fi, rep1, rep2):
+	fin = open('./practica_creativa2/bookinfo/src/productpage/' + fi, 'r')
+
+	with fin as file:
+		x= file.read()
+	fin.close()
+
+	fin = open('./practica_creativa2/bookinfo/src/productpage/' + fi, 'w')
+	with fin as file:
+		x= x.replace(rep1, rep2)
+		fin.write(x)
+	fin.close()
 
 #Modificamos el fichero requirements.txt
 arch('requirements.txt', 'urllib3==1.26.5', 'urllib3')
