@@ -5,19 +5,16 @@ from subprocess import call, run
 
 #Funcion para reemplazar dentro del docker-compose.yaml
 def dcompose_ver(fin, version):
-	import re
-
-def cambiarCompose(version):
 	options = {
 		"v1": {"SERVICE_VERSION": "v1", "ENABLE_RATINGS": "false", "STAR_COLOR": "black"},
 		"v2": {"SERVICE_VERSION": "v2", "ENABLE_RATINGS": "true", "STAR_COLOR": "black"},
 		"v3": {"SERVICE_VERSION": "v3", "ENABLE_RATINGS": "true", "STAR_COLOR": "red"}
 	}
 	if version not in options:
-        	print("Elige una versión valida[v1, v2, v3]")
+        	print("No se ha seleccionado una versión válida de reviews (v1, v2, v3)")
         	exit()
 
-	with open("docker-compose.yml", "r") as f:
+	with open(fin, "r") as f:
         	lines = f.readlines()
 
     	new_lines = []
@@ -34,7 +31,7 @@ def cambiarCompose(version):
 			line = re.sub(r"STAR_COLOR=\w+", f"STAR_COLOR={options[version]['STAR_COLOR']}", line)
 		new_lines.append(line)
 
-	with open("docker-compose.yml", "w") as f:
+	with open(fin, "w") as f:
         	f.writelines(new_lines)
 
 #Clonamos la carpeta practica_creativa2 del github
