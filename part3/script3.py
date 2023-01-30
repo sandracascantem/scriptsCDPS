@@ -27,13 +27,13 @@ while version != "v1" or version != "v2" or version != "v3":
   version = input("ERROR: Introduce una versión correcta para reviews (v1, v2, v3) !!!: \n")
 
 if version == "v1":
-  return
+  exit()
 elif version == "v2":
   arch2("./docker-compose-prueba.yaml", 30, "false", "true")
   arch2("./docker-compose-prueba.yaml", 31, "v1", "v2")
-  return
+  exit()
 elif version == "v3":
   arch2("./docker-compose-prueba.yaml", 30, "false", "true")
   arch2("./docker-compose-prueba.yaml", 31, "v1", "v3")
   arch2("./docker-compose-prueba.yaml", 32, "black", "red")
-  return
+  exit()
