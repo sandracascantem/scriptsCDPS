@@ -28,8 +28,8 @@ services:
       - productpage
     environment:
       - ENABLE_RATINGS=true #false para la v1
-      - SERVICE_VERSION=v2  #Cambia la version (v1/v2/v3)
-      - STAR_COLOR=black    #black v2 y red v3
+      - SERVICE_VERSION=v3  #Cambia la version (v1/v2/v3)
+      - STAR_COLOR=red    #black v2 y red v3
 
   ratings:
     build: ./ratings/.
