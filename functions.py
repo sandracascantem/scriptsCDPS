@@ -16,13 +16,13 @@ def arch(fi, rep1, rep2):
 
 #Funcion arch2 para reemplazar dentro del docker-compose.yaml de part3
 def arch(fi, rep1, rep2):
-	fin = open('./docker-compose.yaml' + fi, 'r')
+	fin = open('./docker-compose.yaml', 'r')
 
 	with fin as file:
 		x= file.read()
 	fin.close()
 
-	fin = open('./docker-compose.yaml' + fi, 'w')
+	fin = open('./docker-compose.yaml', 'w')
 	with fin as file:
 		x= x.replace(rep1, rep2)
 		fin.write(x)
