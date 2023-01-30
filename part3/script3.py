@@ -29,6 +29,10 @@ while version =! v1 or version != v2 or version != v3!:
 if version == "v1":
   return
 elif version == "v2":
-  compose_cambio("./docker-compose.yaml", linea, texto):
+  compose_cambio("./docker-compose.yaml", 30, texto)
+  compose_cambio("./docker-compose.yaml", 31, texto)
+  compose_cambio("./docker-compose.yaml", 32, texto)
 elif version == "v3":
-  compose_cambio(archivo, linea, texto):
+  compose_cambio("./docker-compose.yaml", 30, texto)
+  compose_cambio("./docker-compose.yaml", 31, texto)
+  compose_cambio("./docker-compose.yaml", 32, texto)
