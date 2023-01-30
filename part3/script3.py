@@ -1,9 +1,14 @@
 #!/usr/bin/python3
 
-import os, sys, subprocess, functions
+import os, sys, subprocess
 from subprocess import call, run
-from functions import arch2
 
+def compose_cambio(archivo, linea, texto):
+	contenido = file(archivo).read().splitlines()
+	contenido.insert(linea, texto)
+	f = file(archivo, "w")
+	f.writelines("\n".join(contenido))
+ 
 #Clonamos la carpeta practica_creativa2 del github
 run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
 
