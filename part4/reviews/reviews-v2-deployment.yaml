@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: reviews
-        image: 35/reviews-v2
+        image: sandracascantem/35:reviews
         imagePullPolicy: IfNotPresent
         env:
         - name: LOG_DIR
