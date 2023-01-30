@@ -2,6 +2,7 @@
 
 import os, sys, subprocess
 from subprocess import call, run
+from functions import arch
 
 #Clonamos la carpeta practica_creativa2 del github
 run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
@@ -21,4 +22,4 @@ call(['sudo docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gr
 
 #Seleccionamos la version de review que queremos y modificamos el docker-compose:
 version = input("Introduce la versión de reviews deseada: \n")
-arch('productpage_monolith.py', '9080', puerto)
+arch('docker-compose.yaml', '9080', puerto)
