@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-import os, sys, subprocess
+import os, sys, subprocess, functions
 from subprocess import call
 from functions import arch
 
