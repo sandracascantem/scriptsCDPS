@@ -2,7 +2,7 @@
 
 import os, sys, subprocess
 from subprocess import call, run
-from functions import arch
+from functions import arch2
 
 #Clonamos la carpeta practica_creativa2 del github
 run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
@@ -21,5 +21,14 @@ os.chdir('./practica_creativa2/bookinfo/src/reviews')
 call(['sudo docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build'], shell=True)
 
 #Seleccionamos la version de review que queremos y modificamos el docker-compose:
-version = input("Introduce la versión de reviews deseada: \n")
-arch('docker-compose.yaml', '9080', puerto)
+version = input("Introduce la versión de reviews deseada (v1, v2, v3): \n")
+
+while version =! v1 or version != v2 or version != v3!:
+  version = input("ERROR: Introduce una versión correcta para reviews (v1, v2, v3) !!!: \n")
+
+if version == "v1":
+  arch2(,)
+elif version == "v2":
+  arch2(,)
+elif version == "v3":
+  arch2(,)
