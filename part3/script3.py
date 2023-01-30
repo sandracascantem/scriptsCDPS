@@ -5,25 +5,35 @@ from subprocess import call, run
 
 #Funcion arch2 para reemplazar dentro del docker-compose.yaml de part3
 def arch2(arch, version):
-    with open(arch, "r") as f:
-        lineas = f.readlines()
-    if version == "v1":
-        exit()
-    elif version == "v2":
-        service_version = ['      - SERVICE_VERSION=v2\n' if "SERVICE_VERSION" in line else line for line in lines]
-        enable_ratings = ['      - ENABLE_RATINGS=true\n' if "ENABLE_RATINGS" in line else line for line in lines_version]
-        star_color = ['      - STAR_COLOR=black\n' if "STAR_COLOR" in line else line for line in lines_ratings]
-    elif version == "v3":
-        service_version = ['      - SERVICE_VERSION=v3\n' if "SERVICE_VERSION" in line else line for line in lines]
-        enable_ratings = ['      - ENABLE_RATINGS=true\n' if "ENABLE_RATINGS" in line else line for line in lines_version]
-        star_color = ['      - STAR_COLOR=red\n' if "STAR_COLOR" in line else line for line in lines_ratings]
-    else:
-        print("No se ha seleccionado una versi´pn correcta de reviews (v1, v2, v3)")
-        exit()
-
-    with open("docker-compose.yml", "w") as f:
-        f.writelines(star_color)
+	with open(arch, "r") as f:
+		contenido = f.readlines()
+		for line in contenido:
+			#['+' if i > 5 else '-' for i in range(1, 11)]
+			if version == "v1":
+				service_version = ['\t- SERVICE_VERSION=v1\n' if "SERVICE_VERSION" in line else line for line in contenido]
+				enable_ratings = ['\t- ENABLE_RATINGS=true\n' if "ENABLE_RATINGS" in line else line for line in lines_version]
+				star_color = ['\t- STAR_COLOR=black\n' if "STAR_COLOR" in line else line for line in lines_ratings]
+			elif version == "v2":
+				service_version = ['\t- SERVICE_VERSION=v2\n' if "SERVICE_VERSION" in line else line for line in lines]
+				enable_ratings = ['\t- ENABLE_RATINGS=true\n' if "ENABLE_RATINGS" in line else line for line in lines_version]
+				star_color = ['\t- STAR_COLOR=black\n' if "STAR_COLOR" in line else line for line in lines_ratings]
+			elif version == "v3":
+				service_version = ['\t- SERVICE_VERSION=v3\n' if "SERVICE_VERSION" in line else line for line in lines]
+				enable_ratings = ['\t- ENABLE_RATINGS=true\n' if "ENABLE_RATINGS" in line else line for line in lines_version]
+				star_color = ['\t- STAR_COLOR=red\n' if "STAR_COLOR" in line else line for line in lines_ratings]
+			else:
+				print("No se ha seleccionado una versi´pn correcta de reviews (v1, v2, v3)")
+				exit()
+	with open("docker-compose.yml", "w") as f:
+		f.writelines(star_color)
  
+def service_version(arch, version):
+	with open(arch, 'r') as fin:
+		lines =fin.readlines()
+		for line in lines:
+			if "SERVICE_VERSION" in line
+				
+		
 #Clonamos la carpeta practica_creativa2 del github
 run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
 
