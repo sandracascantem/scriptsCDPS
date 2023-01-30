@@ -4,20 +4,25 @@ import os, sys, subprocess
 from subprocess import call, run
 
 #Funcion arch2 para reemplazar dentro del docker-compose.yaml de part3
-def arch2(fi, fila, rep1, rep2):
-	fin = open('./docker-compose.yaml', 'r')
+def arch2(arch, version):
+    with open(arch, "r") as f:
+        lineas = f.readlines()
+    if version == "v1":
+        exit()
+    elif version == "v2":
+        service_version = ['      - SERVICE_VERSION=v2\n' if "SERVICE_VERSION" in line else line for line in lines]
+        enable_ratings = ['      - ENABLE_RATINGS=true\n' if "ENABLE_RATINGS" in line else line for line in lines_version]
+        star_color = ['      - STAR_COLOR=black\n' if "STAR_COLOR" in line else line for line in lines_ratings]
+    elif version == "v3":
+        service_version = ['      - SERVICE_VERSION=v3\n' if "SERVICE_VERSION" in line else line for line in lines]
+        enable_ratings = ['      - ENABLE_RATINGS=true\n' if "ENABLE_RATINGS" in line else line for line in lines_version]
+        star_color = ['      - STAR_COLOR=red\n' if "STAR_COLOR" in line else line for line in lines_ratings]
+    else:
+        print("No se ha seleccionado una versi´pn correcta de reviews (v1, v2, v3)")
+        exit()
 
-	with fin as file:
-		in fila:
-			x= file.read()
-	fin.close()
-
-	fin = open('./docker-compose.yaml', 'w')
-	with fin as file:
-		in fila:
-			x= x.replace(rep1, rep2)
-			fin.write(x)
-	fin.close()
+    with open("docker-compose.yml", "w") as f:
+        f.writelines(star_color)
  
 #Clonamos la carpeta practica_creativa2 del github
 run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
