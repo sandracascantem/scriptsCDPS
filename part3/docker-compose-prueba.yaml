@@ -1,0 +1,44 @@
+version: '3.0'
+
+services:
+  productpage:
+    build: ./productPage/.
+    image: 35/productpage
+    container_name: 35-productpage
+    ports:
+      - '9080:9080'
+    environment:
+      - GROUP_NUMBER=35
+  
+  details:
+    build: ./details/.
+    image: 35/details
+    container_name: 35-details
+    depends_on: 
+      - productpage
+    environment:
+      - SERVICE_VERSION=v1
+      - ENABLE_EXTERNAL_BOOK_SERVICE=true
+  
+  reviews:
+    build: ./practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg/.
+    image: 35/reviews
+    container_name: 35-reviews
+    depends_on: 
+      - productpage
+    environment:
+      - ENABLE_RATINGS=false
+      - SERVICE_VERSION=v1 
+      - STAR_COLOR=black  
+      #para v1: false - v1 - black/red (no importa)
+      #para v2: true - v2 - black
+      #para v3: true - v3 - red
+
+  ratings:
+    build: ./ratings/.
+    image: 35/ratings
+    container_name: 35-ratings
+    depends_on: 
+      - reviews
+    environment:
+      - SERVICE_VERSION=v1
