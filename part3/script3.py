@@ -3,36 +3,31 @@
 import os, sys, subprocess
 from subprocess import call, run
 
-#Funcion arch2 para reemplazar dentro del docker-compose.yaml de part3
-def arch2(arch, version):
-	with open(arch, "r") as f:
-		contenido = f.readlines()
-		for line in contenido:
-			#['+' if i > 5 else '-' for i in range(1, 11)]
-			if version == "v1":
-				service_version = ['\t- SERVICE_VERSION=v1\n' if "SERVICE_VERSION" in line else line for line in contenido]
-				enable_ratings = ['\t- ENABLE_RATINGS=true\n' if "ENABLE_RATINGS" in line else line for line in lines_version]
-				star_color = ['\t- STAR_COLOR=black\n' if "STAR_COLOR" in line else line for line in lines_ratings]
-			elif version == "v2":
-				service_version = ['\t- SERVICE_VERSION=v2\n' if "SERVICE_VERSION" in line else line for line in lines]
-				enable_ratings = ['\t- ENABLE_RATINGS=true\n' if "ENABLE_RATINGS" in line else line for line in lines_version]
-				star_color = ['\t- STAR_COLOR=black\n' if "STAR_COLOR" in line else line for line in lines_ratings]
-			elif version == "v3":
-				service_version = ['\t- SERVICE_VERSION=v3\n' if "SERVICE_VERSION" in line else line for line in lines]
-				enable_ratings = ['\t- ENABLE_RATINGS=true\n' if "ENABLE_RATINGS" in line else line for line in lines_version]
-				star_color = ['\t- STAR_COLOR=red\n' if "STAR_COLOR" in line else line for line in lines_ratings]
-			else:
-				print("No se ha seleccionado una versi´pn correcta de reviews (v1, v2, v3)")
-				exit()
-	with open("docker-compose.yml", "w") as f:
-		f.writelines(star_color)
- 
-def service_version(arch, version):
-	with open(arch, 'r') as fin:
-		lines =fin.readlines()
-		for line in lines:
-			if "SERVICE_VERSION" in line
-				
+#Funcion para reemplazar dentro del docker-compose.yaml
+def dcompose_ver(fin, version):
+    options = {
+        "v1": {"SERVICE_VERSION": "v1", "ENABLE_RATINGS": "false", "STAR_COLOR": "black"},
+        "v2": {"SERVICE_VERSION": "v2", "ENABLE_RATINGS": "true", "STAR_COLOR": "black"},
+        "v3": {"SERVICE_VERSION": "v3", "ENABLE_RATINGS": "true", "STAR_COLOR": "red"}
+    }
+
+    if version not in options:
+        print("No se ha seleccionado una versión de reviews válida (v1, v2, v3)")
+        exit()
+
+    with open(fin, "r") as f:
+        lines = f.readlines()
+        
+    new_lines = []
+    for line in lines:
+        for k, v in options[version].items():
+            if f"{k}=" in line:
+                line = line.replace(f"{k}=", f"{k}={v}")
+        new_lines.append(line)
+
+    with open(fin, "w") as f:
+        f.writelines(new_lines)
+
 		
 #Clonamos la carpeta practica_creativa2 del github
 run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
@@ -53,17 +48,4 @@ call(['sudo docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gr
 #Seleccionamos la version de review que queremos y modificamos el docker-compose:
 version = input("Introduce la versión de reviews deseada (v1, v2, v3): \n")
 
-if str(version) == 'v1':
-	exit()
-elif str(version) == 'v2':
-	arch2("./docker-compose-prueba.yaml", 30, "false", "true")
-	arch2("./docker-compose-prueba.yaml", 31, "v1", "v2")
-	exit()
-elif str(version) == 'v3':
-	arch2("./docker-compose-prueba.yaml", 30, "false", "true")
-	arch2("./docker-compose-prueba.yaml", 31, "v1", "v3")  
-	arch2("./docker-compose-prueba.yaml", 32, "black", "red")
-	exit()
-else:
-	print("ERROR: no se ha seleccionado una versión correcta para reviews (v1, v2, v3)")
-	exit()
+dcompose_ver('./docker-compose-prueba', str(version))
