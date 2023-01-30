@@ -5,30 +5,38 @@ from subprocess import call, run
 
 #Funcion para reemplazar dentro del docker-compose.yaml
 def dcompose_ver(fin, version):
+	import re
+
+def cambiarCompose(version):
 	options = {
 		"v1": {"SERVICE_VERSION": "v1", "ENABLE_RATINGS": "false", "STAR_COLOR": "black"},
 		"v2": {"SERVICE_VERSION": "v2", "ENABLE_RATINGS": "true", "STAR_COLOR": "black"},
 		"v3": {"SERVICE_VERSION": "v3", "ENABLE_RATINGS": "true", "STAR_COLOR": "red"}
 	}
 	if version not in options:
-		print("No se ha seleccionado una versión válida para reviews (v1, v2, v3)\n")
-		exit()
-	
-	with open(fin, "r") as f:
+        	print("Elige una versión valida[v1, v2, v3]")
+        	exit()
+
+	with open("docker-compose.yml", "r") as f:
         	lines = f.readlines()
-	new_lines = []
-	for line in lines:
-		if "SERVICE_VERSION" in line:
+
+    	new_lines = []
+    	replace_next = False
+    	for line in lines:
+		if "STAR_COLOR" in line:
+			replace_next = True
+		if "SERVICE_VERSION" in line and replace_next:
 			line = re.sub(r"SERVICE_VERSION=\w+", f"SERVICE_VERSION={options[version]['SERVICE_VERSION']}", line)
+			replace_next = False
 		if "ENABLE_RATINGS" in line:
 			line = re.sub(r"ENABLE_RATINGS=\w+", f"ENABLE_RATINGS={options[version]['ENABLE_RATINGS']}", line)
 		if "STAR_COLOR" in line:
 			line = re.sub(r"STAR_COLOR=\w+", f"STAR_COLOR={options[version]['STAR_COLOR']}", line)
 		new_lines.append(line)
 
-	with open(fin, "w") as f:
+	with open("docker-compose.yml", "w") as f:
         	f.writelines(new_lines)
-		
+
 #Clonamos la carpeta practica_creativa2 del github
 run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
 
