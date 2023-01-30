@@ -16,10 +16,9 @@ def dcompose_ver(fin, version):
 
 	with open(fin, "r") as f:
         	lines = f.readlines()
-
-    	new_lines = []
-    	replace_next = False
-    	for line in lines:
+	new_lines = []
+	replace_next = False
+	for line in lines:
 		if "STAR_COLOR" in line:
 			replace_next = True
 		if "SERVICE_VERSION" in line and replace_next:
