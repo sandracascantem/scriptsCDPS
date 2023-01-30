@@ -16,15 +16,15 @@ def dcompose_ver(fin, version):
 	
 	with open(fin, "r") as f:
         	lines = f.readlines()
-		new_lines = []
-		for line in lines:
-			if "SERVICE_VERSION" in line:
-				line = re.sub(r"SERVICE_VERSION=\w+", f"SERVICE_VERSION={options[version]['SERVICE_VERSION']}", line)
-			if "ENABLE_RATINGS" in line:
-				line = re.sub(r"ENABLE_RATINGS=\w+", f"ENABLE_RATINGS={options[version]['ENABLE_RATINGS']}", line)
-			if "STAR_COLOR" in line:
-				line = re.sub(r"STAR_COLOR=\w+", f"STAR_COLOR={options[version]['STAR_COLOR']}", line)
-			new_lines.append(line)
+	new_lines = []
+	for line in lines:
+		if "SERVICE_VERSION" in line:
+			line = re.sub(r"SERVICE_VERSION=\w+", f"SERVICE_VERSION={options[version]['SERVICE_VERSION']}", line)
+		if "ENABLE_RATINGS" in line:
+			line = re.sub(r"ENABLE_RATINGS=\w+", f"ENABLE_RATINGS={options[version]['ENABLE_RATINGS']}", line)
+		if "STAR_COLOR" in line:
+			line = re.sub(r"STAR_COLOR=\w+", f"STAR_COLOR={options[version]['STAR_COLOR']}", line)
+		new_lines.append(line)
 
 	with open(fin, "w") as f:
         	f.writelines(new_lines)
