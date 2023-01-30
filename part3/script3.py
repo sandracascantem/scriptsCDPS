@@ -32,13 +32,16 @@ while (str(version) != 'v1') or (str(version) != 'v2') or (str(version) != 'v3')
 	version = input("ERROR: Introduce una versión correcta para reviews (v1, v2, v3) !!!: \n")
 
 if str(version) == 'v1':
-  exit()
+	exit()
 elif str(version) == 'v2':
-  arch2("./docker-compose-prueba.yaml", 30, "false", "true")
-  arch2("./docker-compose-prueba.yaml", 31, "v1", "v2")
-  exit()
+	arch2("./docker-compose-prueba.yaml", 30, "false", "true")
+	arch2("./docker-compose-prueba.yaml", 31, "v1", "v2")
+	exit()
 elif str(version) == 'v3':
-  arch2("./docker-compose-prueba.yaml", 30, "false", "true")
-  arch2("./docker-compose-prueba.yaml", 31, "v1", "v3")
-  arch2("./docker-compose-prueba.yaml", 32, "black", "red")
-  exit()
+	arch2("./docker-compose-prueba.yaml", 30, "false", "true")
+	arch2("./docker-compose-prueba.yaml", 31, "v1", "v3")  
+	arch2("./docker-compose-prueba.yaml", 32, "black", "red")
+	exit()
+else:
+	print("ERROR: no se ha seleccionado una versión correcta para reviews (v1, v2, v3)")
+	exit()
