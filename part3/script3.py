@@ -2,7 +2,7 @@
 
 import os, sys, subprocess
 from subprocess import call, run
-from functions import compose_cambio
+from functions import arch2
 
 #Clonamos la carpeta practica_creativa2 del github
 run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
@@ -29,10 +29,11 @@ while version =! v1 or version != v2 or version != v3!:
 if version == "v1":
   return
 elif version == "v2":
-  compose_cambio("./docker-compose.yaml", 30, texto)
-  compose_cambio("./docker-compose.yaml", 31, texto)
-  compose_cambio("./docker-compose.yaml", 32, texto)
+  arch2("./docker-compose-prueba.yaml", 30, "false", "true")
+  arch2("./docker-compose-prueba.yaml", 31, "v1", "v2")
+  return
 elif version == "v3":
-  compose_cambio("./docker-compose.yaml", 30, texto)
-  compose_cambio("./docker-compose.yaml", 31, texto)
-  compose_cambio("./docker-compose.yaml", 32, texto)
+  arch2("./docker-compose-prueba.yaml", 30, "false", "true")
+  arch2("./docker-compose-prueba.yaml", 31, "v1", "v3")
+  arch2("./docker-compose-prueba.yaml", 32, "black", "red")
+  return
