@@ -27,18 +27,18 @@ call(['sudo docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gr
 
 #Seleccionamos la version de review que queremos y modificamos el docker-compose:
 version = input("Introduce la versión de reviews deseada (v1, v2, v3): \n")
-version = str(version)
+vers = str(version)
 
 while version != "v1" or version != "v2" or version != "v3":
 	version = input("ERROR: Introduce una versión correcta para reviews (v1, v2, v3) !!!: \n")
-	version = str(version)
-if version == "v1":
+	vers = str(version)
+if vers == "v1":
   exit()
-elif version == "v2":
+elif vers == "v2":
   arch2("./docker-compose-prueba.yaml", 30, "false", "true")
   arch2("./docker-compose-prueba.yaml", 31, "v1", "v2")
   exit()
-elif version == "v3":
+elif vers == "v3":
   arch2("./docker-compose-prueba.yaml", 30, "false", "true")
   arch2("./docker-compose-prueba.yaml", 31, "v1", "v3")
   arch2("./docker-compose-prueba.yaml", 32, "black", "red")
