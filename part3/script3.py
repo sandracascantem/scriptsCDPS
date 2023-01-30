@@ -27,7 +27,7 @@ while version =! v1 or version != v2 or version != v3!:
   version = input("ERROR: Introduce una versión correcta para reviews (v1, v2, v3) !!!: \n")
 
 if version == "v1":
-  arch2(,)
+  return
 elif version == "v2":
   arch2(,)
 elif version == "v3":
