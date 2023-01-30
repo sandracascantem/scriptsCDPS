@@ -3,11 +3,21 @@
 import os, sys, subprocess
 from subprocess import call, run
 
-def compose_cambio(archivo, linea, texto):
-	contenido = file(archivo).read().splitlines()
-	contenido.insert(linea, texto)
-	f = file(archivo, "w")
-	f.writelines("\n".join(contenido))
+#Funcion arch2 para reemplazar dentro del docker-compose.yaml de part3
+def arch2(fi, fila, rep1, rep2):
+	fin = open('./docker-compose.yaml', 'r')
+
+	with fin as file:
+		in fila:
+			x= file.read()
+	fin.close()
+
+	fin = open('./docker-compose.yaml', 'w')
+	with fin as file:
+		in fila:
+			x= x.replace(rep1, rep2)
+			fin.write(x)
+	fin.close()
  
 #Clonamos la carpeta practica_creativa2 del github
 run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
