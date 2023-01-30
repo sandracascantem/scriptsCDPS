@@ -10,23 +10,21 @@ def dcompose_ver(fin, version):
 		"v2": {"SERVICE_VERSION": "v2", "ENABLE_RATINGS": "true", "STAR_COLOR": "black"},
 		"v3": {"SERVICE_VERSION": "v3", "ENABLE_RATINGS": "true", "STAR_COLOR": "red"}
 	}
-	
 	if version not in options:
 		print("No se ha seleccionado una versión válida para reviews (v1, v2, v3)\n")
 		exit()
 	
 	with open(fin, "r") as f:
         	lines = f.readlines()
-
-	new_lines = []
-    	for line in lines:
-		if "SERVICE_VERSION" in line:
-			line = re.sub(r"SERVICE_VERSION=\w+", f"SERVICE_VERSION={options[version]['SERVICE_VERSION']}", line)
-		if "ENABLE_RATINGS" in line:
-			line = re.sub(r"ENABLE_RATINGS=\w+", f"ENABLE_RATINGS={options[version]['ENABLE_RATINGS']}", line)
-		if "STAR_COLOR" in line:
-			line = re.sub(r"STAR_COLOR=\w+", f"STAR_COLOR={options[version]['STAR_COLOR']}", line)
-		new_lines.append(line)
+		new_lines = []
+		for line in lines:
+			if "SERVICE_VERSION" in line:
+				line = re.sub(r"SERVICE_VERSION=\w+", f"SERVICE_VERSION={options[version]['SERVICE_VERSION']}", line)
+			if "ENABLE_RATINGS" in line:
+				line = re.sub(r"ENABLE_RATINGS=\w+", f"ENABLE_RATINGS={options[version]['ENABLE_RATINGS']}", line)
+			if "STAR_COLOR" in line:
+				line = re.sub(r"STAR_COLOR=\w+", f"STAR_COLOR={options[version]['STAR_COLOR']}", line)
+			new_lines.append(line)
 
 	with open(fin, "w") as f:
         	f.writelines(new_lines)
