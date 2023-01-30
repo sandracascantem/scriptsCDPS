@@ -19,23 +19,24 @@ def arch2(fi, fila, rep1, rep2):
 	fin = open('./docker-compose.yaml', 'r')
 
 	with fin as file:
-		x= file.read()
+		in fila:
+			x= file.read()
 	fin.close()
 
 	fin = open('./docker-compose.yaml', 'w')
 	with fin as file:
-		
-		x= x.replace(rep1, rep2)
-		fin.write(x)
+		in fila:
+			x= x.replace(rep1, rep2)
+			fin.write(x)
 	fin.close()
 
 #Cambia las filas correspondientes a la version de reviews en el docker-compose
-def dcompose_vers(filas, columna, nuevo_dato):
+def dcompose_vers(filas, antiguo_dato, nuevo_dato):
     contenido = list()
     with open('./docker-compose.yaml', 'r+') as archivo:
         contenido = archivo.readlines()
         for fila in filas:
-            columnas = contenido[fila-1]
+            columnas = contenido.replace
             columnas[columna] = nuevo_dato
             contenido[fila-1] = ';'.join(columnas)+ '\n'
     with open(ruta, 'w') as archivo:
