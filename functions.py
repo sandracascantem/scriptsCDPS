@@ -15,7 +15,7 @@ def arch(fi, rep1, rep2):
 	fin.close()
 
 #Funcion arch2 para reemplazar dentro del docker-compose.yaml de part3
-def arch(fi, rep1, rep2):
+def arch2(fi, fila, rep1, rep2):
 	fin = open('./docker-compose.yaml', 'r')
 
 	with fin as file:
@@ -24,6 +24,26 @@ def arch(fi, rep1, rep2):
 
 	fin = open('./docker-compose.yaml', 'w')
 	with fin as file:
+		
 		x= x.replace(rep1, rep2)
 		fin.write(x)
 	fin.close()
+
+#Cambia las filas correspondientes a la version de reviews en el docker-compose
+def dcompose_vers(filas, columna, nuevo_dato):
+    contenido = list()
+    with open('./docker-compose.yaml', 'r+') as archivo:
+        contenido = archivo.readlines()
+        for fila in filas:
+            columnas = contenido[fila-1]
+            columnas[columna] = nuevo_dato
+            contenido[fila-1] = ';'.join(columnas)+ '\n'
+    with open(ruta, 'w') as archivo:
+        archivo.writelines(contenido)
+	
+#ec
+def compose_cambio(archivo, linea, texto):
+	contenido = file(archivo).read().splitlines()
+	contenido.insert(linea, texto)
+	f = file(archivo, "w")
+	f.writelines("\n".join(contenido))
