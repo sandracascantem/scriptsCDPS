@@ -20,3 +20,4 @@ os.chdir('./practica_creativa2/bookinfo/src/reviews')
 call(['sudo docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build'], shell=True)
 
 #Seleccionamos la version de review que queremos
+version = input("Introduce la versión de reviews deseada: \n")
