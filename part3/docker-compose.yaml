@@ -27,7 +27,7 @@ services:
     depends_on: 
       - productpage
     environment:
-      - ENABLE_RATINGS=true
+      - ENABLE_RATINGS=false
       - SERVICE_VERSION=v1 
       - STAR_COLOR=black  
       #para v1: false - v1 - black/red (no importa)
