@@ -19,5 +19,6 @@ if version == "v1" or version == "v2" or version == "v3":
     if version == "v3":
       subprocess.run(["kubectl", "apply", "-f", "reviews/reviews-v3-deployment.yaml"])
 else:
+    print("ERROR: se ha introducido una version no valida (v1, v2 o v3) !!!\n")
     exit()
   
