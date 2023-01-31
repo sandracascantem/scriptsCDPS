@@ -13,7 +13,7 @@ Para probarlo, hemos creado una MV en Google Cloud y abierto su consola SSH en u
 
 Ejecutamos el script con el comando "python3 script1.py". Este script:
 
-	-Clona la carpeta practica_creativa2 del github de la asignatura.
+	-Clona la carpeta practica_creativa2 del github de la asignatura (https://github.com/CDPS-ETSIT/practica_creativa2.git).
   
 	-Instala pip en la maquina virtual y se instalan las dependencias de requirements con pip3.
   
@@ -25,7 +25,7 @@ Ejecutamos el script con el comando "python3 script1.py". Este script:
 	Por ello, se ha introducido una regla de FW en Google Cloud donde a los puertos TCP se les ha asignado el rango de puertos mencionado anteriormente. 
 	(En caso de introducir un puerto fuera de dicho rango sale del script y no se ejecuta nuestra aplicación monolítica, habría que volver a ejecutar el script introduciendo un puerto correcto).
   
-	-Llama a "productpage_monolith.py" con el puerto introducido (correctamente) en el paso anterior.
+	-Llama a "productpage_monolith.py" (script de la app) con el puerto introducido (correctamente) en el paso anterior.
 
 
 A continuación, introducimos en el navegador la ip pública de la instancia (MV) con el puerto introducido: http://(ip-publica):(puerto)/productpage obteniendo el resultado esperado.
@@ -40,6 +40,24 @@ Como podemos observar, el título de la aplicación es en nuestro caso 35 y la c
 
 Ahora se quiere desplegar la misma aplicación monolítica pero usando docker. Para ello, hemos creado el script "script2.py" entregado en el zip, dentro de la carpeta "part2", que automatiza la creación de las imágenes y contenedores docker. Además de, lógicamente, el fichero "Dockerfile", un script que se ejecuta dentro de los contenedores docker (se hace run desde el Dockerfile) llamado "docker.py" y un script "delete.py" que eliminará los contenedores e imágenes creadas de docker, (una vez que ha sido lanzada la aplicación con "script2.py").
 
-Ejecutamos el scriptcon el comando "python3 script1.py". Este script:
+Ejecutamos el script con el comando "python3 script2.py". Este script:
 
-	-Clona la carpeta practica_creativa2 del github de la asignatura.
+	-Construye la imagen de docker 35/product-page.
+	-Arranca el contenedor de docker 35-productpager.
+
+
+La imagen (y por consiguiente el contenedor) se construye según el contenido del "Dockerfile". Este fichero:
+
+	-Contiene la variable de entorno "GROUP_NUMBER" que es nuestro número de grupo (35).
+	-Clona la carpeta practica_creativa2 del github de la asignatura (https://github.com/CDPS-ETSIT/practica_creativa2.git).
+	-Copia y ejecuta el script "docker.py" para la imagen durante su proceso de construcción.
+	-Expone el puerto 9080 a través del cual se va a acceder a la aplicación.
+	-Ejecuta "productpage_monolith.py" (script de la app) con el puerto 9080 tras haber inicializado el contenedor.
+
+
+El script "docker.py" mencionado, que se utiliza para crear la imagen del contenedor. Este script:
+
+	-Clona la carpeta practica_creativa2 del github de la asignatura (https://github.com/CDPS-ETSIT/practica_creativa2.git).
+	-Instala pip y se instalan las dependencias de requirements con pip3.
+	-Extrae la variable de entorno "GROUP_NUMBER" creado en el Dockerfile.
+	-Modifica el productpage.html para cambiar el título de la app por la variable de entorno.
