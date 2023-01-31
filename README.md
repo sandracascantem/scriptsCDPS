@@ -42,14 +42,13 @@ Ahora se quiere desplegar la misma aplicación monolítica pero usando docker. P
 
 Ejecutamos el script con el comando "python3 script2.py". Este script:
 
-	-Construye la imagen de docker 35/product-page.
-	-Arranca el contenedor de docker 35-productpager.
+	-Construye la imagen de docker "35/product-page".
+	-Arranca el contenedor de docker "35-productpage".
 
 
 La imagen (y por consiguiente el contenedor) se construye según el contenido del "Dockerfile". Este fichero:
 
 	-Contiene la variable de entorno "GROUP_NUMBER" que es nuestro número de grupo (35).
-	-Clona la carpeta practica_creativa2 del github de la asignatura (https://github.com/CDPS-ETSIT/practica_creativa2.git).
 	-Copia y ejecuta el script "docker.py" para la imagen durante su proceso de construcción.
 	-Expone el puerto 9080 a través del cual se va a acceder a la aplicación.
 	-Ejecuta "productpage_monolith.py" (script de la app) con el puerto 9080 tras haber inicializado el contenedor.
@@ -61,3 +60,26 @@ El script "docker.py" mencionado, que se utiliza para crear la imagen del conten
 	-Instala pip y se instalan las dependencias de requirements con pip3.
 	-Extrae la variable de entorno "GROUP_NUMBER" creado en el Dockerfile.
 	-Modifica el productpage.html para cambiar el título de la app por la variable de entorno.
+	
+	
+El script "delete.py"
+
+	-Borra el contenedor creado "35-productpage".
+	-Borra la imagen creada "35/product-page".
+	
+
+A continuación, introducimos en el navegador la ip pública de la instancia (MV) con el puerto introducido: http://(ip-publica):(puerto)/productpage obteniendo el resultado esperado.
+
+<img width="1440" alt="Captura de pantalla 2023-01-31 a las 17 12 58" src="https://user-images.githubusercontent.com/99333138/215816874-f219570c-837b-4cc8-8e82-385e753abe8e.png">
+
+Como podemos observar, el título de la aplicación es en nuestro caso 35 y la conexión se establece correctamente. Dicha aplicación está compuesta por dos servicios: uno para la página de productos y otro para la descripción de los productos.
+
+
+>> Incluir la línea de comando del despliegue del contenedor en la memoria: nosotros incluimos los comandos que se piden en el "script2.py"
+
+	-La imagen de docker se construye con: "sudo docker build -t 35/product-page .
+	-El contenedor de docker se arranca con: "sudo docker run --name 35-productpage -p9080:9080 35/product-page
+
+
+
+-----Part3-----SEGMENTACIÓN DE UNA APLICACIÓN MONOLÍTICA EN MICROSERVICIOS UTILIZANDO DOCKER-COMPOSE-----
