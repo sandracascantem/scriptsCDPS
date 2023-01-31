@@ -28,26 +28,26 @@ def dcompose_ver(fin, version):
 	updated_lines = []
 	
 	for line in lines:
-        # check if we're in the "details" section
-        if line.startswith("  details:"):
-		in_details = True
+		# check if we're in the "details" section
+		if line.startswith("  details:"):
+			in_details = True
 
-        # if we're in the "details" section, update environment variables
-        if in_details:
-		# check if the line starts with "  - SERVICE_VERSION="
-		if line.startswith("      - SERVICE_VERSION="):
-                	# replace the line with the new value from the dictionary
-                	line = "      - SERVICE_VERSION={}\n".format(env_vars[version]["SERVICE_VERSION"])
-	
-		# check if the line starts with "  - ENABLE_RATINGS="
-		if line.startswith("      - ENABLE_RATINGS="):
-                	# replace the line with the new value from the dictionary
-                	line = "      - ENABLE_RATINGS={}\n".format(env_vars[version]["ENABLE_RATINGS"])
+		# if we're in the "details" section, update environment variables
+		if in_details:
+			# check if the line starts with "  - SERVICE_VERSION="
+			if line.startswith("      - SERVICE_VERSION="):
+				# replace the line with the new value from the dictionary
+				line = "      - SERVICE_VERSION={}\n".format(env_vars[version]["SERVICE_VERSION"])
 
-		# check if the line starts with "  - STAR_COLOR="
-		if line.startswith("      - STAR_COLOR="):
-                	# replace the line with the new value from the dictionary
-                	line = "      - STAR_COLOR={}\n".format(env_vars[version]["STAR_COLOR"])
+			# check if the line starts with "  - ENABLE_RATINGS="
+			if line.startswith("      - ENABLE_RATINGS="):
+				# replace the line with the new value from the dictionary
+				line = "      - ENABLE_RATINGS={}\n".format(env_vars[version]["ENABLE_RATINGS"])
+
+			# check if the line starts with "  - STAR_COLOR="
+			if line.startswith("      - STAR_COLOR="):
+				# replace the line with the new value from the dictionary
+				line = "      - STAR_COLOR={}\n".format(env_vars[version]["STAR_COLOR"])
 
         # add the line to the updated_lines list
         updated_lines.append(line)
