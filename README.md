@@ -38,7 +38,9 @@ Como podemos observar, el título de la aplicación es en nuestro caso 35 y la c
 
 -----Part2-----DESPLIEGUE DE UNA APLICACIÓN MONOLÍTICA USANDO DOCKER-----
 
-Ahora se quiere desplegar la misma aplicación monolítica pero usando docker. Para ello, hemos creado el script "script2.py" entregado en el zip, dentro de la carpeta "part2", que automatiza la creación de las imágenes y contenedores docker. Además de, lógicamente, el fichero "Dockerfile", un script que se ejecuta dentro de los contenedores docker (se hace run desde el Dockerfile) llamado "docker.py" y un script "delete.py" que eliminará los contenedores e imágenes creadas de docker, (una vez que ha sido lanzada la aplicación con "script2.py").
+Ahora se quiere desplegar la misma aplicación monolítica pero usando docker. Para ello, hemos creado el script "script2.py" entregado en el zip, dentro de la carpeta "part2", que automatiza la creación de las imágenes y contenedores docker. Además de, lógicamente, el fichero "Dockerfile", un script que se ejecuta al crear la imagen docker (se hace run desde el Dockerfile) llamado "docker.py" y un script "delete.py" que eliminará los contenedores e imágenes creadas de docker, (una vez que ha sido lanzada la aplicación con "script2.py").
+
+Para probarlo, hemos creado una MV en Google Cloud y abierto su consola SSH en un nuevo navegador. Además, hemos instalado git con el comando "sudo apt-get install git" para poder clonar la carpeta con los scripts. A continuación, nos cambiamos al directorio de la carpeta de esta parte (scriptsCDPS/part2). (Vale hacerlo en la MV creada en la parte1 cambiando simplemente de directorio).
 
 Ejecutamos el script con el comando "python3 script2.py". Este script:
 
@@ -68,7 +70,7 @@ El script "delete.py"
 	-Borra la imagen creada "35/product-page".
 	
 
-A continuación, introducimos en el navegador la ip pública de la instancia (MV) con el puerto introducido: http://(ip-publica):(puerto)/productpage obteniendo el resultado esperado.
+A continuación de haber ejecutado el "script2.py", introducimos en el navegador la ip pública de la instancia (MV) con el puerto introducido: http://(ip-publica):(puerto)/productpage obteniendo el resultado esperado.
 
 <img width="1440" alt="Captura de pantalla 2023-01-31 a las 17 12 58" src="https://user-images.githubusercontent.com/99333138/215816874-f219570c-837b-4cc8-8e82-385e753abe8e.png">
 
@@ -84,3 +86,18 @@ Como podemos observar, el título de la aplicación es en nuestro caso 35 y la c
 
 
 -----Part3-----SEGMENTACIÓN DE UNA APLICACIÓN MONOLÍTICA EN MICROSERVICIOS UTILIZANDO DOCKER-COMPOSE-----
+
+Ahora se va a segmentar la aplicación, es decir, se va a separar cada servicio para que funcione de forma independiente usando docker-compose. Además de los servicios que teníamos anteriormente, productpage y details, se van a añadir dos más: reviews y ratings. Para ello, hemos creado el script "script3.py" entregado en el zip, dentro de la carpeta "part3", que automatiza la creación y lanzamiento de docker-compose. Además de, lógicamente, el fichero "docker-compose.yaml" y los ficheros "Dockerfile" de cada servicio (contenidos respectivamente en las carpetas con sus nombres de servicio, excepto reviews, que se cogerá directamente de la "practica_creativa2"), un script dentro de la carpeta "productPage" que se ejecuta al crear la imagen docker para el servicio productpage (se hace run desde el Dockerfile de productpage) llamado "docker.py", exactamente igual que el utilizado en la parte 2, y un script "delete.py" que eliminará los contenedores e imágenes de docker creadas, (una vez que ha sido lanzada la aplicación con "script3.py").
+
+Para probarlo, hemos creado una MV en Google Cloud y abierto su consola SSH en un nuevo navegador. Además, hemos instalado git con el comando "sudo apt-get install git" para poder clonar la carpeta con los scripts. A continuación, nos cambiamos al directorio de la carpeta de esta parte (scriptsCDPS/part3). (Vale hacerlo en la MV creada en la parte1 cambiando simplemente de directorio).
+
+Ejecutamos el script con el comando "python3 script3.py". Este script:
+
+	-Clona la carpeta "practica_creativa2" del github de la asignatura (https://github.com/CDPS-ETSIT/practica_creativa2.git).
+	-Copia los ficheros "details.rb" (de la carpeta "details" de "practica_creativa2"), "ratings.js" y "package.json" (de "ratings") para almacenarlos en nuestras carpetas respectivas en "part3" junto al Dockerfile correspondiente.
+	-Compila y empaqueta los paquetes de la carpeta "reviews" (dentro de "practica_creativa2").
+	-Pide introducir la versión deseada para el servicio reviews: v1, v2 o v3
+	-Modifica el docker-compose.yaml para cambiar las variables de entorno de reviews según la versión introducida.
+	-Construye las imágenes con docker-compose, arranca los contenedores del docker-compose y lanza la aplicación con todos los servicios.
+	(En caso de introducir una version inválida (que no sea v1, v2 o v3) sale del script y no se ejecuta nuestra aplicación, habría que volver a ejecutar el script introduciendo una versión válida).
+	
