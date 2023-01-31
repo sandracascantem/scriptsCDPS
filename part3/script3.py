@@ -45,4 +45,4 @@ os.chdir('./../../../../practica_creativa2/bookinfo/src/reviews')
 
 #Seleccionamos la version de review que queremos y modificamos el docker-compose:
 version = input("Introduce la versión de reviews deseada (v1, v2 o v3): \n")
-dcompose_ver('./docker-compose.yaml', str(version))
+dcompose_ver('./docker-compose-prueba.yaml', str(version))
