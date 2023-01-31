@@ -44,8 +44,11 @@ call(['sudo docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gr
 version = input("Introduce la versión de reviews deseada (v1, v2 o v3): \n")
 dcompose_ver('./../../../../docker-compose.yaml', str(version))
 
-#Construimos las imagenes de docker-compose
-subprocess.run(["sudo", "docker-compose", "build"])
+if version == "v1" or version == "v2" or version == "v3":
+    #Construimos las imagenes de docker-compose
+    subprocess.run(["sudo", "docker-compose", "build"])
 
-#Lanzamos el docker-compose
-subprocess.run(["sudo", "docker-compose", "up"])
+    #Lanzamos el docker-compose
+    subprocess.run(["sudo", "docker-compose", "up"])
+else:
+    exit()
