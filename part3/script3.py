@@ -48,9 +48,9 @@ def dcompose_ver(fin, version):
 			if line.startswith("      - STAR_COLOR="):
 				# replace the line with the new value from the dictionary
 				line = "      - STAR_COLOR={}\n".format(env_vars[version]["STAR_COLOR"])
-
-        # add the line to the updated_lines list
-        updated_lines.append(line)
+				
+	# add the line to the updated_lines list
+	updated_lines.append(line)
 
         # check if we've reached the end of the "details" section
         if line.startswith("    ports:"):
@@ -58,6 +58,7 @@ def dcompose_ver(fin, version):
 
 	# join the updated lines with newline characters
 	updated_contents = "\n".join(updated_lines)
+	
 	# write the updated contents to the docker-compose.yaml file
 	with open(fin, "w") as f:
 		f.writelines(updated_contents)
