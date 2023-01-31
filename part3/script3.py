@@ -19,6 +19,7 @@ def dcompose_ver(fin, version):
 	# read the contents of the docker-compose.yaml file
 	with open(fin, "r") as f:
         	contents = f.read()
+	f.close()
 	
 	# split the contents into lines
 	lines = contents.split("\n")
@@ -59,7 +60,6 @@ def dcompose_ver(fin, version):
 	# join the updated lines with newline characters
 	updated_contents = "\n".join(updated_lines)
 	
-	f.close()
 	# write the updated contents to the docker-compose.yaml file
 	with open(fin, "w") as f:
 		f.writelines(updated_contents)
