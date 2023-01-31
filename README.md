@@ -30,7 +30,8 @@ Ejecutamos el script con el comando "python3 script1.py". Este script:
 
 A continuación, introducimos en el navegador la ip pública de la instancia (MV) con el puerto introducido: http://(ip-publica):(puerto)/productpage obteniendo el resultado esperado.
   
-![Captura de pantalla de 2023-01-09 19-08-51](https://user-images.githubusercontent.com/99333138/211384476-570fd7cf-4d89-411f-bf6a-d37cfc534b9b.png)
+<img width="1440" alt="part1" src="https://user-images.githubusercontent.com/99333138/215883219-1bb003a2-832d-484c-8e55-79cff79fae8a.png">
+
 
 Como podemos observar, el título de la aplicación es en nuestro caso 35 y la conexión se establece correctamente. Dicha aplicación está compuesta por dos servicios: uno para la página de productos y otro para la descripción de los productos.
 
@@ -72,7 +73,8 @@ El script "delete.py":
 
 A continuación de haber ejecutado el "script2.py", introducimos en el navegador la ip pública de la instancia (MV) con el puerto introducido: http://(ip-publica):9080/productpage obteniendo el resultado esperado.
 
-<img width="1440" alt="Captura de pantalla 2023-01-31 a las 17 12 58" src="https://user-images.githubusercontent.com/99333138/215816874-f219570c-837b-4cc8-8e82-385e753abe8e.png">
+<img width="1440" alt="part2" src="https://user-images.githubusercontent.com/99333138/215883277-412077cb-b366-459e-833b-5fcb442bd0b2.png">
+
 
 Como podemos observar, el título de la aplicación es en nuestro caso 35 y la conexión se establece correctamente. Dicha aplicación está compuesta por dos servicios: uno para la página de productos y otro para la descripción de los productos.
 
@@ -139,3 +141,28 @@ El script "delete.py":
 
 A continuación de haber ejecutado el "script3.py", introducimos en el navegador la ip pública de la instancia (MV) con el puerto introducido: http://(ip-publica):9080/productpage obteniendo el resultado esperado.
 
+Seleccionando v1:
+<img width="1440" alt="part3-v1" src="https://user-images.githubusercontent.com/99333138/215883363-24619338-15b2-41d1-a586-bf355789b8ed.png">
+
+Seleccionando v2:
+<img width="1440" alt="part3-v2" src="https://user-images.githubusercontent.com/99333138/215883431-93dec63c-eb26-40ff-b974-45d11d7b507f.png">
+
+Seleccionando v3:
+<img width="1440" alt="part3-v3" src="https://user-images.githubusercontent.com/99333138/215883477-f06f351b-06e2-471c-8549-cddf7dbb4c84.png">
+
+
+Como podemos observar, el título de la aplicación es en nuestro caso 35 y la conexión se establece correctamente. Dicha aplicación está compuesta por cuatro servicios: uno para la página de productos, uno para la descripción de los productos, uno para las críticas y otro para las valoraciones.
+
+
+>> Incluir las diferencias con la versión de un único contenedor.
+
+>> En una versión con varios contenedores, cada contenedor se encarga de un servicio específico. Esto facilita la administración, el mantenimiento y la escalabilidad de la aplicación, ya que se puede escalar cada contenedor de forma independiente según sea necesario.
+
+>> En cambio, en una versión con un único contenedor, todas las responsabilidades están en un solo contenedor, lo que puede dificultar la administración y la escalabilidad, pero puede ser más sencillo de implementar y administrar debido a su simplicidad.
+
+
+>> Incluir la línea del despliegue del docker-compose: nosotros incluimos los comandos que se piden en el "script3.py"
+
+>> Las imágenes las construimos con "sudo docker-compose build"
+
+>> Se despliegan los contenedores y se lanza la aplicación basada en microservicios con "sudo docker-compose up"
