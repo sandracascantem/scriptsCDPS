@@ -19,8 +19,6 @@ def arch(fi, rep1, rep2):
 
 #Clonamos la carpeta practica_creativa2 del github
 subprocess.run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
-#Cambiamos de directorio (a partir de ahora se trabaja dentro de la carpeta practica_creativa2)
-#os.chdir('/home/sandracascantemoran/scriptsCDPS')
 
 #Modificamos el fichero requirements.txt
 arch('requirements.txt', 'urllib3==1.26.5', 'urllib3')
@@ -42,7 +40,11 @@ arch('templates/productpage.html', 'Simple Bookstore App', title)
 
 #Modificamos el script productpage_monolith.py para cambiar el puerto por otro introducido
 puerto = input("Introduce un puerto entre 8980 y 9080: \n")
-arch('productpage_monolith.py', '9080', puerto)
+if puerto < 8980 or puerto > 9080:
+	print("ERROR: no se ha seleccionado un puerto valido (entre 8980 y 9080) !!!\n")
+	exit()
+else:
+	arch('productpage_monolith.py', '9080', puerto)
 
 #Llamamos a productpage_monolith.py para crear la aplicacion (como si fuese un monolito)
 subprocess.run(["python3", "./practica_creativa2/bookinfo/src/productpage/productpage_monolith.py", puerto])
