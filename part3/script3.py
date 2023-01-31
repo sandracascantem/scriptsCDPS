@@ -36,15 +36,10 @@ run(["cp", "practica_creativa2/bookinfo/src/ratings/package.json", "./ratings/."
 
 #Cambiamos de directorio (a partir de ahora se trabaja dentro de la ruta src/reviews/reviews-wlpcfg)
 os.chdir('./practica_creativa2/bookinfo/src/reviews')
-print("Current working directory:", os.getcwd())
 
 #Compilar y empaquetar ficheros necesarios
 call(['sudo docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gradle/project gradle:4.8.1 gradle clean build'], shell=True)
 
-#Cambiamos de directorio (a partir de ahora se trabaja dentro de la ruta src/reviews/reviews-wlpcfg)
-os.chdir('./../../../../practica_creativa2/bookinfo/src/reviews')
-print("Current working directory:", os.getcwd())
-
 #Seleccionamos la version de review que queremos y modificamos el docker-compose:
 version = input("Introduce la versión de reviews deseada (v1, v2 o v3): \n")
-dcompose_ver('./docker-compose-prueba.yaml', str(version))
+dcompose_ver('./../../../../docker-compose-prueba.yaml', str(version))
