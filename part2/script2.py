@@ -30,6 +30,10 @@ subprocess.run(["apt-get", "install", "python3-pip"])
 #Instalamos dependencias de requirements.txt con pip
 subprocess.run(["pip3", "install", '-r', './practica_creativa2/bookinfo/src/productpage/requirements.txt'])
 
-#Capturamos la variable GROUP_NUMBER definida en el Dockerfile
+#Creamos la variable de entorno (con nuestro num de grupo, 35)
+os.environ['GROUP_NUMBER']= "35"
+#Extraemos la variable de entorno y guardarla aqui
 title = os.environ.get('GROUP_NUMBER')
+
+#Modificamos productpage.html para cambiar el titulo de la app por la variable de entorno
 arch('templates/productpage.html', 'Simple Bookstore App', title)
