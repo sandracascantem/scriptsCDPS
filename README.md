@@ -166,3 +166,17 @@ Como podemos observar, el título de la aplicación es en nuestro caso 35 y la c
 >> Las imágenes las construimos con "sudo docker-compose build"
 
 >> Se despliegan los contenedores y se lanza la aplicación basada en microservicios con "sudo docker-compose up"
+
+
+
+-----Part4-----DESPLIEGUE DE UNA APLICACIÓN BASADA EN MICROSERVICIOS UTILIZANDO KUBERNETES-----
+
+Ahora se pide desplegar la misma aplicación basada en microservicios pero utilizando Kubernetes, no docker-compose. Para ello, hemos creado el script "script4.py" entregado en el zip, dentro de la carpeta "part4", que automatiza la creación y lanzamiento de los servicios con Kubernetes. Además de, lógicamente, los ficheros yaml que definen los servicios de la aplicación "productpage.yaml" (dentro de la carpeta "productPage"), "details.yaml" (dentro de la carpeta "details"), "ratings.yaml" (dentro de la carpeta "ratings") y para el caso del servicio reviews tenemos la definición del servicio "reviews-svc.yaml", y los despliegues para las distintas versiones "reviews-v1-deployment.yaml", "reviews-v2-deployment.yaml" y "reviews-v3-deployment.yaml" (todos ellos dentro de la carpeta "reviews"); y un script "delete.py" que eliminará los pods (y servicios) de Kubernetes, (una vez que ha sido lanzada la aplicación con "script4.py").
+
+Para probarlo, hemos creado un clúster de Kubernetes en Google Cloud (GKE), de modo que se creen 5 nodos. Nos conectamos al clúster a través de la Google Shell, clonamos la carpeta con los scripts (https://github.com/sandracascantem/scriptsPC2). A continuación, nos cambiamos al directorio de la carpeta de esta parte (scriptsCDPS/part4).
+
+Ejecutamos el script con el comando "python3 script4.py". Este script:
+
+	-Pide introducir la versión deseada para el servicio reviews: v1, v2 o v3.
+	-Construye los servicios de Kubernetes. Para productpage: "kubectl apply -f productPage/productpage.yaml", para details: "kubectl apply -f details/details.yaml",
+	para ratings: "kubectl apply -f ratings/ratings.yaml", para reviews: "kubectl apply -f reviews/reviews-svc.yaml" y según la versión introducida (X) construye reviews/reviews-vX-deployment.yaml
