@@ -79,22 +79,27 @@ file.writelines(updated_contents)
 fin.close()
 
 def dcompose_ver(fi, version):
-    with open(file_path, 'r') as file:
-        data = yaml.safe_load(file)
-        data['services']['reviews']['environment'] = env_vars
-    
-    with open(file_path, 'w') as file:
-        yaml.dump(data, file)
+    # dictionary to store environment variables based on version
+    env_vars = {
+        "v1": {"SERVICE_VERSION": "v1", "ENABLE_RATINGS": "false", "STAR_COLOR": "black"},
+        "v2": {"SERVICE_VERSION": "v2", "ENABLE_RATINGS": "true", "STAR_COLOR": "black"},
+        "v3": {"SERVICE_VERSION": "v3", "ENABLE_RATINGS": "true", "STAR_COLOR": "red"}
+    }
+    # check if the specified version is valid
+    if version not in env_vars:
+        print("Choose a valid version [v1, v2, v3]")
+        return
 
-file_path = 'docker-compose.yaml'
-env_vars = [
-    {'ENABLE_RATINGS': 'true'},
-    {'SERVICE_VERSION': 'v2'},
-    {'STAR_COLOR': 'black'}
-]
+    # load the yaml file
+    with open(fi, "r") as stream:
+        data = yaml.safe_load(stream)
 
-modify_reviews_env(file_path, env_vars)
+    # update the environment variables of the reviews service
+    data["services"]["reviews"]["environment"] = env_vars[version]
 
+    # write the updated yaml file
+    with open(fi, "w") as stream:
+        yaml.dump(data, stream, default_flow_style=False)
 
 #Clonamos la carpeta practica_creativa2 del github
 run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
