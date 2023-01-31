@@ -51,9 +51,9 @@ def dcompose_ver(fin, version):
 				
 	# add the line to the updated_lines list
 	updated_lines.append(line)
-
-        # check if we've reached the end of the "details" section
-        if line.startswith("    ports:"):
+	
+	# check if we've reached the end of the "details" section
+	if line.startswith("    ports:"):
 		in_details = False
 
 	# join the updated lines with newline characters
