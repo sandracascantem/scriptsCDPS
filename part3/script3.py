@@ -59,9 +59,11 @@ def dcompose_ver(fin, version):
 	# join the updated lines with newline characters
 	updated_contents = "\n".join(updated_lines)
 	
+	f.close()
 	# write the updated contents to the docker-compose.yaml file
 	with open(fin, "w") as f:
 		f.writelines(updated_contents)
+	f.close()
 
 #Clonamos la carpeta practica_creativa2 del github
 run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
