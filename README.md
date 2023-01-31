@@ -52,8 +52,8 @@ La imagen (y por consiguiente el contenedor) se construye según el contenido de
 
 	-Contiene la variable de entorno "GROUP_NUMBER" que es nuestro número de grupo (35).
 	-Copia y ejecuta el script "docker.py" para la imagen durante su proceso de construcción.
-	-Expone el puerto 9080 a través del cual se va a acceder a la aplicación.
-	-Ejecuta "productpage_monolith.py" (script de la app) con el puerto 9080 tras haber inicializado el contenedor.
+	-Expone el puerto 9080 a través del cual se va a acceder al servicio.
+	-Ejecuta con python3 "productpage_monolith.py" (script de la app) con el puerto 9080 tras haber inicializado el contenedor.
 
 
 El script "docker.py" mencionado, que se utiliza para crear la imagen del contenedor. Este script:
@@ -64,13 +64,13 @@ El script "docker.py" mencionado, que se utiliza para crear la imagen del conten
 	-Modifica el productpage.html para cambiar el título de la app por la variable de entorno.
 	
 	
-El script "delete.py"
+El script "delete.py":
 
 	-Borra el contenedor creado "35-productpage".
 	-Borra la imagen creada "35/product-page".
 	
 
-A continuación de haber ejecutado el "script2.py", introducimos en el navegador la ip pública de la instancia (MV) con el puerto introducido: http://(ip-publica):(puerto)/productpage obteniendo el resultado esperado.
+A continuación de haber ejecutado el "script2.py", introducimos en el navegador la ip pública de la instancia (MV) con el puerto introducido: http://(ip-publica):9080/productpage obteniendo el resultado esperado.
 
 <img width="1440" alt="Captura de pantalla 2023-01-31 a las 17 12 58" src="https://user-images.githubusercontent.com/99333138/215816874-f219570c-837b-4cc8-8e82-385e753abe8e.png">
 
@@ -98,6 +98,44 @@ Ejecutamos el script con el comando "python3 script3.py". Este script:
 	-Compila y empaqueta los paquetes de la carpeta "reviews" (dentro de "practica_creativa2").
 	-Pide introducir la versión deseada para el servicio reviews: v1, v2 o v3
 	-Modifica el docker-compose.yaml para cambiar las variables de entorno de reviews según la versión introducida.
-	-Construye las imágenes con docker-compose, arranca los contenedores del docker-compose y lanza la aplicación con todos los servicios.
+	-Construye las imágenes con docker-compose y arranca los contenedores del docker-compose y lanza la aplicación con todos los servicios.
 	(En caso de introducir una version inválida (que no sea v1, v2 o v3) sale del script y no se ejecuta nuestra aplicación, habría que volver a ejecutar el script introduciendo una versión válida).
 	
+
+La imagen del servicio productpage se construye con su Dockerfile que hace uso del script "docker.py", ambos ficheros están en la carpeta "productPage". Ambos son iguales que en la parte2, salvo que ya no se ejecuta "productpage_monolith.py", sino "productpage.py". (Por ello no nos detendremos en su contenido).
+
+La imagen del servicio details se construye con su Dockerfile:
+
+	-Copia el fichero "details.rb" en la ruta "/opt/microservices/" dentro del contenedor.
+	-Tiene dos variables de entorno: "SERVICE_VERSION" con valor v1 y "ENABLE_EXTERNAL_BOOK_SERVICE" con valor true.
+	-Expone el puerto 9080 a través del cual se va a acceder al servicio.
+	-Ejecuta con ruby "details.rb" (código del servicio details) con el puerto 9080 tras haber inicializado el contenedor.
+
+
+La imagen del servicio ratings se construye con su Dockerfile:
+
+	-Copia los ficheros "package.json" y "ratings.js" en la ruta "/opt/microservices/" dentro del contenedor.
+	-Tiene la variable de entorno: "SERVICE_VERSION" con valor v1.
+	-Instala las dependencias del json con npm install.
+	-Expone el puerto 9080 a través del cual se va a acceder al servicio.
+	-Ejecuta con node "ratings.js" (código del servicio ratings) con el puerto 9080 tras haber inicializado el contenedor.
+
+
+La imagen del servicio reviews se construye con su Dockerfile dado en la ruta "practica_creativa2/bookinfo/src/reviews/reviews-wlpcfg". (Por ello no nos detendremos en su contenido).
+
+El fichero "docker-compose.yaml" establece para cada servicio:
+
+	-La imagen que se va a utilizar para crear el contenedor.
+	-El nombre del contenedor que se va a crear.
+	-Las variables de entorno definidas en su Dockerfile con sus valores correspondientes.
+	-En el caso del servicio de productpage, los puertos 9080:9080; para el resto de servicios, la dependencia (details y reviews son hijos de productpage y ratings es hijo de reviews).
+
+
+El script "delete.py":
+
+	-Borra los contenedores creados a partir de docker-compose.
+	-Borra las imágenes creadas ("35/reviews", "35/ratings", "35/details", "35/productpage").
+
+
+A continuación de haber ejecutado el "script3.py", introducimos en el navegador la ip pública de la instancia (MV) con el puerto introducido: http://(ip-publica):9080/productpage obteniendo el resultado esperado.
+
