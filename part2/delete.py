@@ -1,5 +1,9 @@
+#!/usr/bin/python3
 
+import os, sys, subprocess, yaml
+from subprocess import call, run
 
-sudo docker rm 35-productpage
-35-productpage
-sandracascantemoran@instance-1:~/scriptsPC2/part2$ sudo docker rmi 35/product-page
+#Borra el contenedor creado
+subprocess.run(["sudo", "docker", "rm", "35-productpage"])
+#Borra las imagenes creadas
+subprocess.run(["sudo", "docker", "rmi", "35/product-page"])
