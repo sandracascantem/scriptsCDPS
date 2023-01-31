@@ -76,9 +76,8 @@ Como podemos observar, el título de la aplicación es en nuestro caso 35 y la c
 
 
 >> Incluir la línea de comando del despliegue del contenedor en la memoria: nosotros incluimos los comandos que se piden en el "script2.py"
-
-	-La imagen de docker se construye con: "sudo docker build -t 35/product-page .
-	-El contenedor de docker se arranca con: "sudo docker run --name 35-productpage -p9080:9080 35/product-page
+>> La imagen de docker se construye con: "sudo docker build -t 35/product-page .
+>> El contenedor de docker se arranca con: "sudo docker run --name 35-productpage -p9080:9080 35/product-page
 
 
 
