@@ -4,7 +4,7 @@ import os, sys, subprocess, re
 from subprocess import call, run
 
 #Funcion para reemplazar dentro del docker-compose.yaml
-def dcompose_ver(fi, version):
+def dcompose_ver(file, version):
     # dictionary to store environment variables based on version
     env_vars = {
         "v1": {"SERVICE_VERSION": "v1", "ENABLE_RATINGS": "false", "STAR_COLOR": "black"},
@@ -15,57 +15,69 @@ def dcompose_ver(fi, version):
     if version not in env_vars:
         print("Choose a valid version [v1, v2, v3]")
         return
-
+    
     # read the contents of the docker-compose.yaml file
-    fin = open(fi, "r")
-    with fin as file:
-        contents = file.read()
-    fin.close()
-
+    with open(file, "r") as f:
+        contents = f.read()
+    
     # split the contents into lines
     lines = contents.split("\n")
     # flag to keep track of the "details" section
-    in_details = False
+    in_reviews = False
+    # flag to keep track of the "environment" section
+    in_env = False
     # updated lines with environment variables for "details" section
     updated_lines = []
-
+    
     for line in lines:
-        # check if we're in the "details" section
-        if line.startswith("  details:"):
-            in_details = True
+        # check if we're in the "services" section
+        if line.startswith("  services:"):
+            in_reviews = False
+        # check if we're in the "reviews" section
+        if line.startswith("    reviews:"):
+            in_reviews = True
+        # check if we're in the "environment" section
+        if line.startswith("      environment:"):
+            in_env = True
 
-        # if we're in the "details" section, update environment variables
-        if in_details:
+        # if we're in the "reviews" and "environment" section, update environment variables
+        if in_reviews and in_env:
             # check if the line starts with "  - SERVICE_VERSION="
-            if line.startswith("      - SERVICE_VERSION="):
+            if line.startswith("        - SERVICE_VERSION="):
                 # replace the line with the new value from the dictionary
-                line = "      - SERVICE_VERSION={}\n".format(env_vars[version]["SERVICE_VERSION"])
+                line = "        - SERVICE_VERSION={}\n".format(env_vars[version]["SERVICE_VERSION"])
 
             # check if the line starts with "  - ENABLE_RATINGS="
-            if line.startswith("      - ENABLE_RATINGS="):
+            if line.startswith("        - ENABLE_RATINGS="):
                 # replace the line with the new value from the dictionary
-                line = "      - ENABLE_RATINGS={}\n".format(env_vars[version]["ENABLE_RATINGS"])
+                line = "        - ENABLE_RATINGS={}\n".format(env_vars[version]["ENABLE_RATINGS"])
 
             # check if the line starts with "  - STAR_COLOR="
-            if line.startswith("      - STAR_COLOR="):
+            if line.startswith("        - STAR_COLOR="):
                 # replace the line with the new value from the dictionary
-                line = "      - STAR_COLOR={}\n".format(env_vars[version]["STAR_COLOR"])
+                line = "        - STAR_COLOR={}\n".format(env_vars[version]["STAR_COLOR"])
 
-        # add the line to the updated_lines list
-        updated_lines.append(line)
+        # check if we've reached the end of the "environment" section
+        if line.startswith("    ports:") or line.start
+        for line in lines:
+if line.startswith(" environment:"):
+in_env = True
+if in_env:
+if line.startswith(" SERVICE_VERSION="):
+line = f" SERVICE_VERSION={env_vars[version]['SERVICE_VERSION']}"
+elif line.startswith(" ENABLE_RATINGS="):
+line = f" ENABLE_RATINGS={env_vars[version]['ENABLE_RATINGS']}"
+elif line.startswith(" STAR_COLOR="):
+line = f" STAR_COLOR={env_vars[version]['STAR_COLOR']}"
+if line.startswith(" services:"):
+in_env = False
+updated_lines.append(line)
+updated_contents = "\n".join(updated_lines)
+fin = open(fi, "w")
+with fin as file:
+file.writelines(updated_contents)
+fin.close()
 
-        # check if we've reached the end of the "details" section
-        if line.startswith("    ports:"):
-            in_details = False
-
-    # join the updated lines with newline characters
-    updated_contents = "\n".join(updated_lines)
-
-    # write the updated contents to the docker-compose.yaml file
-    fin = open(fi, "w")
-    with fin as file:
-        file.writelines(updated_contents)
-    fin.close()
 
 #Clonamos la carpeta practica_creativa2 del github
 run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
