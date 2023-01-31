@@ -224,7 +224,7 @@ Como podemos observar, el título de la aplicación es en nuestro caso 35 y la c
 >> Kubernetes permite escalar las aplicaciones basadas en microservicios de manera fácil y eficiente. Se puede definir una cantidad deseada de replicas de un pod, y Kubernetes se encargará de crear o eliminar pods según sea necesario para cumplir con la cantidad deseada. Además, Kubernetes también permite la escalabilidad automática, donde se puede definir una regla para ajustar dinámicamente la cantidad de réplicas en función de la utilización de recursos.
 
 
->> Incluir la línea del despligue de los ficheros de configuración y definición de pods y servicios en la infraestructura de kubernetes: : nosotros incluimos los comandos que se piden en el "script4.py"
+>> Incluir la línea del despligue de los ficheros de configuración y definición de pods y servicios en la infraestructura de kubernetes: nosotros incluimos los comandos que se piden en el "script4.py"
 
 >> Para desplegar los ficheros de configuración para definir los pods y servicios utilizamos el comando "kubectl apply -f archivo.yaml. Siendo el archivo.yaml, para el servicio de productpage "productPage/productpage.yaml" (al estar en la carpeta "productPage"), para el servicio details "details/details.yaml" (al estar en la carpeta "details"), para el servicio de ratings "ratings/ratings.yaml" (al estar en la carpeta "ratings") y para el servicio de reviews necesitamos "reviews/reviews-svc.yaml" y la versión que se quiera, por ejemplo v2: "reviews/reviews-v2-deployment.yaml", (están en la carpeta "reviews").
 
