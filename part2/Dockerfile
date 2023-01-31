@@ -4,9 +4,9 @@ ENV GROUP_NUMBER 35
 
 RUN git clone https://github.com/CDPS-ETSIT/practica_creativa2.git
 
-COPY script2.py .
+COPY docker.py .
 
-RUN python3 script2.py 
+RUN python3 docker.py 
 
 EXPOSE 9080
 
