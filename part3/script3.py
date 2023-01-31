@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 
-import os, sys, subprocess, re
+import os, sys, subprocess, yaml
 from subprocess import call, run
 
 #Funcion para reemplazar dentro del docker-compose.yaml
-def dcompose_ver(file, version):
+def dcompose_ver2(file, version):
     # dictionary to store environment variables based on version
     env_vars = {
         "v1": {"SERVICE_VERSION": "v1", "ENABLE_RATINGS": "false", "STAR_COLOR": "black"},
@@ -77,6 +77,23 @@ fin = open(fi, "w")
 with fin as file:
 file.writelines(updated_contents)
 fin.close()
+
+def dcompose_ver(fi, version):
+    with open(file_path, 'r') as file:
+        data = yaml.safe_load(file)
+        data['services']['reviews']['environment'] = env_vars
+    
+    with open(file_path, 'w') as file:
+        yaml.dump(data, file)
+
+file_path = 'docker-compose.yaml'
+env_vars = [
+    {'ENABLE_RATINGS': 'true'},
+    {'SERVICE_VERSION': 'v2'},
+    {'STAR_COLOR': 'black'}
+]
+
+modify_reviews_env(file_path, env_vars)
 
 
 #Clonamos la carpeta practica_creativa2 del github
