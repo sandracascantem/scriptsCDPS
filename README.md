@@ -3,34 +3,43 @@
 
 #Grupo 35
 
------DESPLIEGUE DE LA APLICACIÓN EN MÁQUINA VIRTUAL PESADA-----
+Se puede acceder a los mismos archivos a través de nuestro repositorio de github: https://github.com/sandracascantem/scriptsPC2
 
-La idea es desplegar la aplicación como si fuera un monolito en una máquina virtual pesada en Google Cloud. Para ello, hemos creado el script "script1.py" entregado en el zip. También lo hemos subido a nuestro repositorio de github: https://github.com/sandracascantem/scriptsPC2
+-----Part1-----DESPLIEGUE DE LA APLICACIÓN EN MÁQUINA VIRTUAL PESADA-----
 
-Para probarlo, hemos creado una MV en Google Cloud y abierto su consola SSH en un nuevo navegador. Además, hemos instalado git con el comando "sudo apt-get install git" para poder clonar la carpeta con los scripts. A continuación nos cambiamos al directorio de dicha carpeta (scriptsCDPS).
+La idea es desplegar la aplicación como si fuera un monolito en una máquina virtual pesada en Google Cloud. Para ello, hemos creado el script "script1.py" entregado en el zip, dentro de la carpeta "part1".
 
-Llamamos al script con el comando "python3 script1.py". Este script:
+Para probarlo, hemos creado una MV en Google Cloud y abierto su consola SSH en un nuevo navegador. Además, hemos instalado git con el comando "sudo apt-get install git" para poder clonar la carpeta con los scripts. A continuación, nos cambiamos al directorio de la carpeta de esta parte (scriptsCDPS/part1).
+
+Ejecutamos el script con el comando "python3 script1.py". Este script:
 
 	-Clona la carpeta practica_creativa2 del github de la asignatura.
   
 	-Instala pip en la maquina virtual y se instalan las dependencias de requirements con pip3.
   
-	-Crea la variable de entorno "GROUP_NUMBER" que es nuestro numero de grupo (35).
+	-Crea la variable de entorno "GROUP_NUMBER" que es nuestro número de grupo (35).
   
-	-Modifica el productpage.html para cambiar el titulo de la app por la variable de entorno.
+	-Modifica el productpage.html para cambiar el título de la app por la variable de entorno.
   
-	-Pide introducir un puerto en el rango 8980-9080 para cambiarlo en el fichero. Esto se debe a una regla del FW en Google Cloud donde a los puertos TCP se les ha asignado el rango de puertos mencionado anteriormente.
+	-Pide introducir un puerto en el rango 8980-9080 para cambiarlo en el fichero de la aplicación. 
+	Por ello, se ha introducido una regla de FW en Google Cloud donde a los puertos TCP se les ha asignado el rango de puertos mencionado anteriormente. 
+	(En caso de introducir un puerto fuera de dicho rango sale del script y no se ejecuta nuestra aplicación monolítica, habría que volver a ejecutar el script introduciendo un puerto correcto).
   
-	-Llama a "productpage_monolith.py" con el puerto introducido en el paso anterior.
+	-Llama a "productpage_monolith.py" con el puerto introducido (correctamente) en el paso anterior.
 
 
-A continuación, introducimos en el navegador la ip pública de la MV con el puerto introducido: http://(ip-publica):(puerto)/productpage obteniendo el resultado esperado.
+A continuación, introducimos en el navegador la ip pública de la instancia (MV) con el puerto introducido: http://(ip-publica):(puerto)/productpage obteniendo el resultado esperado.
   
 ![Captura de pantalla de 2023-01-09 19-08-51](https://user-images.githubusercontent.com/99333138/211384476-570fd7cf-4d89-411f-bf6a-d37cfc534b9b.png)
 
-Como podemos observar, el título de la aplicación es en nuestro caso 35 y la conexión se establece correctamente.
+Como podemos observar, el título de la aplicación es en nuestro caso 35 y la conexión se establece correctamente. Dicha aplicación está compuesta por dos servicios: uno para la página de productos y otro para la descripción de los productos.
 
 
------DESPLIEGUE DE UNA APLICACIÓN MONOLÍTICA USANDO DOCKER-----
 
+-----Part2-----DESPLIEGUE DE UNA APLICACIÓN MONOLÍTICA USANDO DOCKER-----
 
+Ahora se quiere desplegar la misma aplicación monolítica pero usando docker. Para ello, hemos creado el script "script2.py" entregado en el zip, dentro de la carpeta "part2", que automatiza la creación de las imágenes y contenedores docker. Además de, lógicamente, el fichero "Dockerfile", un script que se ejecuta dentro de los contenedores docker (se hace run desde el Dockerfile) llamado "docker.py" y un script "delete.py" que eliminará los contenedores e imágenes creadas de docker, (una vez que ha sido lanzada la aplicación con "script2.py").
+
+Ejecutamos el scriptcon el comando "python3 script1.py". Este script:
+
+	-Clona la carpeta practica_creativa2 del github de la asignatura.
