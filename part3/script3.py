@@ -4,7 +4,7 @@ import os, sys, subprocess, re
 from subprocess import call, run
 
 #Funcion para reemplazar dentro del docker-compose.yaml
-def dcompose_ver(fin, version):
+def dcompose_ver(fi, version):
 	# dictionary to store environment variables based on version
 	env_vars = {
 		"v1": {"SERVICE_VERSION": "v1", "ENABLE_RATINGS": "false", "STAR_COLOR": "black"},
@@ -17,9 +17,9 @@ def dcompose_ver(fin, version):
         	return
 
 	# read the contents of the docker-compose.yaml file
-	with open(fin, "r") as f:
+	fin = open(fi, "r") as f:
         	contents = f.read()
-	f.close()
+	fin.close()
 	
 	# split the contents into lines
 	lines = contents.split("\n")
@@ -61,9 +61,9 @@ def dcompose_ver(fin, version):
 	updated_contents = "\n".join(updated_lines)
 	
 	# write the updated contents to the docker-compose.yaml file
-	with open(fin, "w") as f:
+	fin = open(fi, "w") as f:
 		f.writelines(updated_contents)
-	f.close()
+	fin.close()
 
 #Clonamos la carpeta practica_creativa2 del github
 run(["git", "clone", "https://github.com/CDPS-ETSIT/practica_creativa2"])
