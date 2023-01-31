@@ -4,25 +4,25 @@ import os, sys, subprocess, yaml
 from subprocess import call, run
 
 def dcompose_ver(fi, version):
-    # dictionary to store environment variables based on version
+    #diccionaro para guardar las variables de entorno segun la version
     env_vars = {
         "v1": {"SERVICE_VERSION": "v1", "ENABLE_RATINGS": "false", "STAR_COLOR": "black"},
         "v2": {"SERVICE_VERSION": "v2", "ENABLE_RATINGS": "true", "STAR_COLOR": "black"},
         "v3": {"SERVICE_VERSION": "v3", "ENABLE_RATINGS": "true", "STAR_COLOR": "red"}
     }
-    # check if the specified version is valid
+    #comprueba si la version introducida es valida
     if version not in env_vars:
-        print("Choose a valid version [v1, v2, v3]")
+        print("ERROR: No se ha seleccionado una versión válida (v1, v2 o v3) !!!!\n")
         return
 
-    # load the yaml file
+    #carga el archivo .yaml
     with open(fi, "r") as stream:
         data = yaml.safe_load(stream)
 
-    # update the environment variables of the reviews service
+    #actualiza las variables de estado segun la version dentro de: services - reviews - environment
     data["services"]["reviews"]["environment"] = env_vars[version]
 
-    # write the updated yaml file
+    #escribe el archivo .yaml actualizado
     with open(fi, "w") as stream:
         yaml.dump(data, stream, default_flow_style=False)
 
@@ -46,5 +46,5 @@ call(['sudo docker run --rm -u root -v "$(pwd)":/home/gradle/project -w /home/gr
 #os.chdir('./../../../../practica_creativa2/bookinfo/src/reviews')
 
 #Seleccionamos la version de review que queremos y modificamos el docker-compose:
-version = input("Introduce la versión de reviews deseada (v1, v2, v3): \n")
-dcompose_ver('./../../../../docker-compose-prueba.yaml', str(version))
+version = input("Introduce la versión de reviews deseada (v1, v2 o v3): \n")
+dcompose_ver('./../../../../docker-compose.yaml', str(version))
