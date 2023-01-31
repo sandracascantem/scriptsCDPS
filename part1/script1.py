@@ -40,7 +40,7 @@ arch('templates/productpage.html', 'Simple Bookstore App', title)
 
 #Modificamos el script productpage_monolith.py para cambiar el puerto por otro introducido
 puerto = input("Introduce un puerto entre 8980 y 9080: \n")
-if puerto < 8980 or puerto > 9080:
+if int(puerto) < 8980 or int(puerto) > 9080:
 	print("ERROR: no se ha seleccionado un puerto valido (entre 8980 y 9080) !!!\n")
 	exit()
 else:
