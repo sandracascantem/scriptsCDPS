@@ -17,8 +17,9 @@ def dcompose_ver(fi, version):
         	return
 
 	# read the contents of the docker-compose.yaml file
-	fin = open(fi, "r") as f:
-        	contents = f.read()
+	fin = open(fi, "r")
+	with fin as file:
+        	contents = file.read()
 	fin.close()
 	
 	# split the contents into lines
@@ -61,8 +62,9 @@ def dcompose_ver(fi, version):
 	updated_contents = "\n".join(updated_lines)
 	
 	# write the updated contents to the docker-compose.yaml file
-	fin = open(fi, "w") as f:
-		f.writelines(updated_contents)
+	fin = open(fi, "w")
+	with fin as file:
+		file.writelines(updated_contents)
 	fin.close()
 
 #Clonamos la carpeta practica_creativa2 del github
